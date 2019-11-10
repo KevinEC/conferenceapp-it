@@ -1,0 +1,46 @@
+# base image
+FROM node:12.2.0-alpine as build
+
+# set working directory
+WORKDIR var/www/localhost/htdocs/
+
+# add `/app/node_modules/.bin` to $PATH
+ENV PATH /var/www/localhost/htdocs/node_modules/.bin:$PATH
+
+# install and cache app dependencies
+COPY package.json /var/www/localhost/htdocs/package.json
+RUN npm install --silent
+RUN npm install react-scripts@3.0.1 -g --silent
+
+# local files to container 
+COPY . /var/www/localhost/htdocs/
+
+# compile app for production
+RUN npm run build
+
+# PRODUCTION ENVIRONMENT
+
+# nginx server image
+FROM nginx:1.16.0-alpine
+
+# copy build files to nginx folder
+COPY --from=build var/www/localhost/htdocs/build /usr/share/nginx/html
+
+# replace the default nginx.conf to support react router
+RUN rm /etc/nginx/conf.d/default.conf
+
+# DIGITAL OCEAN BRANCH
+# copy conf for digital ocean into container
+###COPY config/nginx.conf /etc/nginx/conf.d/default.conf
+#
+# expose 80 
+###EXPOSE 80
+#
+###CMD ["nginx", "-g", "daemon off;"]
+
+# HEROKU BRANCH
+# copy conf for heroku into container
+COPY config/nginx.heroku.conf /etc/nginx/conf.d/default.conf
+
+CMD sed -i -e 's/$PORT/'"$PORT"'/g' /etc/nginx/conf.d/default.conf && \
+	nginx -g 'daemon off;'
