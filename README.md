@@ -3,10 +3,13 @@ This is an dockerized react application so the commands aren't as straight forwa
 
 ### Build the image
 `Docker build -t <username>/conferenceapp .`
+
 This will build the image needed to start and run a container. This is only required to be done one time. After this only the next command is required to start the local dev server for coding!
 
 ### Run the Dev Server
-`docker run -v %cd%:/var/www/localhost/htdocs/ --name conferenceapp -v var/www/localhost/htdocs/node_modules/ -p 3000:3000 -p 80:80 <username>/conferenceapp`
+`docker run -v %cd%:/var/www/localhost/htdocs/ --name conferenceapp -v var/www/localhost/htdocs/node_modules/ -p 3000:3000 -p 80:80 --rm <username>/conferenceapp`
+
+
 This will run a docker container named **conferenceapp**. This will start the dev server at localhost:3000 with hot reloading. 
 
 When done developing close the container with
