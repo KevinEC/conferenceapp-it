@@ -1,4 +1,7 @@
-import firebase from 'firebase';
+import app from 'firebase/app';
+
+import Firestore from "./firestore";
+import Authentication from "./authentication";
 
 const config = {
   apiKey: process.env.REACT_APP_API_KEY,
@@ -14,23 +17,12 @@ const config = {
 
 class Firebase {
 	constructor() {
-    firebase.initializeApp(config);
-    this.db = firebase.firestore();
+    app.initializeApp(config);
+    this.db = new Firestore(app.firestore());
+    this.auth = new Authentication(app.auth());
  }
 
-  async getAll(documentName) {
-    let result = [];
-    let connection = this.db.collection(documentName);
-    let data = await connection.get();
-    
-    for(const doc of data.docs) {
-      result.push({
-        id: doc.id,
-        data: doc.data()
-      });
-    }
-    return result;
-  }
+  
 }
 
 export default Firebase;
