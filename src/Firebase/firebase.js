@@ -21,8 +21,6 @@ class Firebase {
     this.db = new Firestore(app.firestore());
     this.auth = new Authentication(app.auth());
  }
-
-  
 }
 
 export default Firebase;

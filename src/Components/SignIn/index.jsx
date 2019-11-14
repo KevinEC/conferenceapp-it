@@ -1,5 +1,10 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
+import { withFirebase } from "../../Firebase";
+
+import { compose } from 'recompose';
+
+import * as ROUTES from "../../Routes/routes.js";
 
 const SignInPage = () => (
 	<div>
@@ -23,17 +28,31 @@ class SignInFormBase extends React.Component {
 		this.state = {...INITIAL_STATE};
 	}
 
-	onSubmit(event) {
-		const { email, password } = this.state
-
+	onSubmit = event => {
+		const { email, password } = this.state;
+		
 		this.props.firebase.auth.doSignInWithEmailAndPassword(email, password)
 		.then(() => {
 			this.setState({ ...INITIAL_STATE });
-			this.props.history.push()
+			this.props.history.push(ROUTES.HOME)
 		})
- 	}
+		.catch(error => {
+			this.setState({ error });
+		});
+		
+		event.preventDefault();
+ 	};
+
+ 	onChange = event => {
+		this.setState({ [event.target.name]: event.target.value });
+	};
 
 	render() {
+
+		const { email, password, error } = this.state;
+
+		const isInvalid = password === '' || email === '';
+
 		return (
 			<form onSubmit={this.onSubmit}>
 			    <input
@@ -59,4 +78,11 @@ class SignInFormBase extends React.Component {
 	}
 }
 
-export default 
+const SignInForm = compose(
+	withRouter,
+	withFirebase,
+)(SignInFormBase);
+
+export default SignInPage;
+
+export { SignInForm };

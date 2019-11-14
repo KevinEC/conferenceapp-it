@@ -2,6 +2,8 @@ import React from "react";
 
 import { withFirebase } from "../Firebase";
 
+import SignOutButton from "./SignOut";
+
 class Home extends React.Component {
   constructor(props) {
     super(props);
@@ -19,6 +21,7 @@ class Home extends React.Component {
       <div>
         <h1>home Change happen here</h1>
         <button onClick={this.log}>{"console.log"}</button>
+        <SignOutButton />
       </div>
     );
   }
