@@ -11,11 +11,11 @@ class Home extends React.Component {
 	}
 
 	componentDidMount(){
-		this.props.firebase.addDummyData();
+		//this.props.firebase.addDummyData();
 	}
 
-	log() {
-		const events = this.props.firebase.getAll('users');
+	async log() {
+		const events = await this.props.firebase.getAll('events');
 		console.log("Events: ", events);
 	}
 

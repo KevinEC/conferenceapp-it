@@ -14,41 +14,22 @@ const config = {
 
 class Firebase {
 	constructor() {
-   firebase.initializeApp(config);
-
-   this.db = firebase.firestore();
+    firebase.initializeApp(config);
+    this.db = firebase.firestore();
  }
 
- getAll = (document) => {
-  let result;
-
-    /* this.db.collection("events")
-    .get()
-    .then(querySnapshot => {
-      result = querySnapshot.docs.map(doc => doc.data());
-    });*/
-
-    this.db.collection(document).get().then((querySnapshot) => {
-      querySnapshot.forEach((doc) => {
-        console.log(`${doc.id} => ${doc.data()}`);
+  async getAll(documentName) {
+    let result = [];
+    let connection = this.db.collection(documentName);
+    let data = await connection.get();
+    
+    for(const doc of data.docs) {
+      result.push({
+        id: doc.id,
+        data: doc.data()
       });
-    });
-
+    }
     return result;
-  }
-
-  addDummyData = () => {
-    this.db.collection("users").add({
-      first: "Ada",
-      last: "Lovelace",
-      born: 1815
-    })
-    .then(function(docRef) {
-      console.log("Document written with ID: ", docRef.id);
-    })
-    .catch(function(error) {
-      console.error("Error adding document: ", error);
-    });
   }
 }
 
