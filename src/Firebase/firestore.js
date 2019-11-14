@@ -7,6 +7,7 @@ class Firestore {
 
 	async getAll(documentName) {
     let result = [];
+    
     let connection = this.db.collection(documentName);
     let data = await connection.get();
     

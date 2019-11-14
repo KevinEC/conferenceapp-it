@@ -1,5 +1,8 @@
 import React from 'react';
-
+import {
+  BrowserRouter as Router,
+  Route,
+} from 'react-router-dom';
 
 import './App.css';
 
@@ -9,7 +12,9 @@ import * as ROUTES from "./Routes/routes";
 
 function App() {
   return (
-    <Home/>
+    <Router>
+      <Route path={ROUTES.HOME} component={Home} />
+    </Router>
   );
 }
 

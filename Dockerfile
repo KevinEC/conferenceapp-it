@@ -2,7 +2,7 @@
 FROM node:12.2.0-alpine
 
 # set working directory
-WORKDIR var/www/localhost/htdocs/
+WORKDIR /var/www/localhost/htdocs/
 
 # add `/var/www/localhost/htdocs/node_modules/.bin` to $PATH
 ENV PATH /var/www/localhost/htdocs/node_modules/.bin:$PATH
