@@ -8,7 +8,8 @@ import './App.css';
 
 import Home from "./Components/Home.jsx";
 import SignInPage from "./Components/SignIn";
-import Tickets from "./Components/Tickets/Tickets"
+import Tickets from "./Components/Tickets/Tickets";
+import { AuthUserContext, withAuthentication } from "./Middleware/Session";
 import 'semantic-ui-css/semantic.min.css';
 import * as ROUTES from "./Routes/routes";
 
