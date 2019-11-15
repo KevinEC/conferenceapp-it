@@ -15,8 +15,6 @@ import { AuthUserContext, withAuthentication } from "./Middleware/Session";
 
 import * as ROUTES from "./Constants/routes";
 
-function App() {
-
 const App = () => {
   
   return(
