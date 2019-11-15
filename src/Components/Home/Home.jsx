@@ -1,9 +1,9 @@
 import React from "react";
 
-import { withFirebase } from "../Middleware/Firebase";
-import { withAuthorization } from "../Middleware/Session";
+import { withFirebase } from "../../Middleware/Firebase";
+import { withAuthorization } from "../../Middleware/Session";
   
-import SignOutButton from "./SignOut";
+import SignOutButton from "../SignOut";
 
 class Home extends React.Component {
   constructor(props) {

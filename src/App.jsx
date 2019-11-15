@@ -6,7 +6,7 @@ import {
 
 import './App.css';
 
-import Home from "./Components/Home.jsx";
+import Home from "./Components/Home/Home";
 import SignInPage from "./Components/SignIn";
 import Tickets from "./Components/Tickets/Tickets"
 
