@@ -1,10 +1,10 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
-import { withFirebase } from "../../Firebase";
+import { withFirebase } from "../../Middleware/Firebase";
 
 import { compose } from 'recompose';
 
-import * as ROUTES from "../../Routes/routes.js";
+import * as ROUTES from "../../Constants/routes.js";
 
 const SignInPage = () => (
 	<div>

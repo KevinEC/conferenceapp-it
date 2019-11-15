@@ -9,10 +9,9 @@ import './App.css';
 import Home from "./Components/Home.jsx";
 import SignInPage from "./Components/SignIn";
 
-import { withAuthentication } from "./Firebase/Session";
-import AuthUserContext from "./Firebase/Session/context.js";
+import { AuthUserContext, withAuthentication } from "./Middleware/Session";
 
-import * as ROUTES from "./Routes/routes";
+import * as ROUTES from "./Constants/routes";
 
 const App = () => {
   

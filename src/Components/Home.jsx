@@ -1,7 +1,7 @@
 import React from "react";
 
-import { withFirebase } from "../Firebase";
-import { withAuthorization } from "../Firebase/Session";
+import { withFirebase } from "../Middleware/Firebase";
+import { withAuthorization } from "../Middleware/Session";
   
 import SignOutButton from "./SignOut";
 
