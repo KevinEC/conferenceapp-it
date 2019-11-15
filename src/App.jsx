@@ -8,10 +8,14 @@ import './App.css';
 
 import Home from "./Components/Home.jsx";
 import SignInPage from "./Components/SignIn";
+import Tickets from "./Components/Tickets/Tickets"
 
 import { AuthUserContext, withAuthentication } from "./Middleware/Session";
 
+
 import * as ROUTES from "./Constants/routes";
+
+function App() {
 
 const App = () => {
   
@@ -25,6 +29,8 @@ const App = () => {
             </Route>
 
             <Route path={ROUTES.SIGN_IN} component={SignInPage} />
+
+            <Route path={ROUTES.TICKETS} component={Tickets} />
           </div>
         </Router>
       }
