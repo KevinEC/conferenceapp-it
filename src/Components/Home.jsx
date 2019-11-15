@@ -1,7 +1,8 @@
 import React from "react";
 
 import { withFirebase } from "../Firebase";
-
+import { withAuthorization } from "../Firebase/Session";
+  
 import SignOutButton from "./SignOut";
 
 class Home extends React.Component {
@@ -17,8 +18,10 @@ class Home extends React.Component {
   }
 
   render() {
+    const signedIn = this.props.authenticated != null;
     return (
       <div>
+        <span>{ signedIn + "" }</span>
         <h1>home Change happen here</h1>
         <button onClick={this.log}>{"console.log"}</button>
         <SignOutButton />
@@ -26,4 +29,6 @@ class Home extends React.Component {
     );
   }
 }
-export default withFirebase(Home);
+
+const condition = authUser => !!authUser;
+export default withAuthorization(condition)(Home);

@@ -18,6 +18,9 @@ class Authentication {
 	doPasswordUpdate = password =>
 		this.auth.currentUser.updatePassword(password);
 
+	doOnAuthStateChanged = method =>
+		this.auth.onAuthStateChanged(method);
+
 	
 }
 

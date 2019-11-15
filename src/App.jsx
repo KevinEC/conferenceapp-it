@@ -9,16 +9,28 @@ import './App.css';
 import Home from "./Components/Home.jsx";
 import SignInPage from "./Components/SignIn";
 
+import { withAuthentication } from "./Firebase/Session";
+import AuthUserContext from "./Firebase/Session/context.js";
+
 import * as ROUTES from "./Routes/routes";
 
-function App() {
-  return (
-    <Router>
-      <Route path={ROUTES.HOME} component={Home} />
+const App = () => {
+  
+  return(
+    <AuthUserContext.Consumer>
+      {authUser =>
+        <Router>
+          <div>
+            <Route path={ROUTES.HOME}>
+              <Home authenticated={authUser}/>
+            </Route>
 
-      <Route path={ROUTES.SIGN_IN} component={SignInPage} />
-    </Router>
-  );
-}
+            <Route path={ROUTES.SIGN_IN} component={SignInPage} />
+          </div>
+        </Router>
+      }
+    </AuthUserContext.Consumer>
+  )
+};  
 
-export default App;
+export default withAuthentication(App);
