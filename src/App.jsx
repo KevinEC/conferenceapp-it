@@ -13,7 +13,6 @@ import { AuthUserContext, withAuthentication } from "./Middleware/Session";
 import 'semantic-ui-css/semantic.min.css';
 
 
-
 import * as ROUTES from "./Constants/routes";
 
 const App = () => {
