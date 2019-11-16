@@ -1,0 +1,36 @@
+.header-root{
+	margin-top: 0 !important;
+	height: 100vh;
+
+	.header-bg{
+		position: absolute;
+		left: 0;
+		top: 0;
+
+		background-image: url(/header-1.jpg);
+		background-size: cover;
+		height: 100vh;
+		width: 100%;
+
+		&::before{
+			content: '';
+			position: absolute;
+			width: 100%;
+			height: 100vh;
+			background-color: rgba(0,0,0, 0.3);
+		}
+	}
+
+	.header-content{
+		position: relative;
+		margin-top: 4.6em;
+	}
+
+	.header-logo{
+		font-size: 60px !important;
+		margin-top: 30vh !important;
+		font-weight: 500;
+		font-family: 'Open Sans Condensed' !important;
+	}
+
+}

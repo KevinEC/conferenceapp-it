@@ -3,9 +3,25 @@
 *******************************/
 
 @fontName:							'Open Sans';
-@headerFont:						'Josefin Sans', 'Helvetica Neue', Arial, Helvetica, sans-serif;
-@pageFont:							'Josefin Sans', 'Helvetica Neue', Arial, Helvetica, sans-serif;
+@fontName2:							'Open Sans Condensed';
+@fontName3:							'Josefin Sans';
 
+@headerFont:						@fontName3, 'Helvetica Neue', Helvetica, sans-serif;
+@pageFont:							@fontName, 'Helvetica Neue', Helvetica, sans-serif;
+
+@googleFontName    : 		@fontName;
+@googleFontName2    : 	@fontName2;
+@googleFontName3    : 	@fontName3;
+
+@importGoogleFonts : 		true;
+@googleFontSizes   : 		'400,700,400italic,700italic';
+@googleSubset      : 		'latin';
+
+@googleProtocol    : 		'https://';
+@googleFontRequest : 		'Josefin+Sans:400,700,400italic,700italic|Open+Sans:300italic,400|Open+Sans+Condensed:700';
+
+//'@{googleFontName}:@{googleFontSizes}|@{googleFontName2}:@{googleFontSizes}|@{googleFontName3}:@{googleFontSizes}';
+//'Josefin+Sans:400,700,400italic,700italic|Open+Sans:300italic,400|Open+Sans+Condensed:500';
 
 /*-------------------
     Brand Colors

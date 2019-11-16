@@ -4,9 +4,9 @@ import {
   Route,
 } from 'react-router-dom';
 
-import './App.css';
+import './App.less';
 
-import Home from "./Components/Home/Home";
+import Home from "./Components/Home";
 import SignInPage from "./Components/SignIn";
 
 import Tickets from "./Components/Tickets/Tickets"
@@ -26,7 +26,7 @@ const App = () => {
           <Navbar authenticated={authUser}/>
 
           <Route path={ROUTES.HOME}>
-            <Home authenticated={authUser}/>
+            <Home />
           </Route>
 
           <Route path={ROUTES.SIGN_IN} component={SignInPage} />
