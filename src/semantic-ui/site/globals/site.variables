@@ -1,0 +1,37 @@
+/*******************************
+     User Global Variables
+*******************************/
+
+@fontName:							'Open Sans';
+@headerFont:						'Josefin Sans', 'Helvetica Neue', Arial, Helvetica, sans-serif;
+@pageFont:							'Josefin Sans', 'Helvetica Neue', Arial, Helvetica, sans-serif;
+
+
+/*-------------------
+    Brand Colors
+--------------------*/
+
+@primaryColor        : 	#FFF27D;
+@secondaryColor      :	#6D4D62;
+
+@lightPrimaryColor   : 	#FFF8BF;
+@lightSecondaryColor : 	#E2B7D3;
+
+/*-------------------
+    Border Radius
+--------------------*/
+
+/* See Power-user section below
+   for explanation of @px variables
+*/
+@relativeBorderRadius: 	2px;
+@absoluteBorderRadius: 	2px;
+
+@defaultBorderRadius: 	@absoluteBorderRadius;
+
+/*-------------------
+     Transitions
+--------------------*/
+
+@defaultDuration : 0.15s;
+@defaultEasing   : ease-out;

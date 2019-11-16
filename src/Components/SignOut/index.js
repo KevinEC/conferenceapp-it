@@ -1,10 +1,12 @@
 import React from 'react';
 import { withFirebase } from "../../Middleware/Firebase";
 
-const SignOutButton = ({firebase}) => (
-	<button type="button" onClick={firebase.auth.doSignOut}>
+import { Menu } from "semantic-ui-react";
+
+const SignOutLink = ({firebase}) => (
+	<Menu.Item as="a" onClick={firebase.auth.doSignOut}>
 		Sign Out
-	</button>
+	</Menu.Item>
 );
 
-export default withFirebase(SignOutButton);
+export default withFirebase(SignOutLink);
