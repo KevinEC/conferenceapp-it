@@ -4,6 +4,7 @@ import { withFirebase } from "../../Middleware/Firebase";
 import { withAuthorization } from "../../Middleware/Session";
   
 import SignOutButton from "../SignOut";
+import { Button } from 'semantic-ui-react'
 
 class Home extends React.Component {
   constructor(props) {
@@ -25,10 +26,13 @@ class Home extends React.Component {
         <h1>home Change happen here</h1>
         <button onClick={this.log}>{"console.log"}</button>
         <SignOutButton />
+        <Button content="semantic!" />
       </div>
     );
   }
 }
 
+export default Home;
+/*
 const condition = authUser => !!authUser;
-export default withAuthorization(condition)(Home);
+export default withAuthorization(condition)(Home);*/
