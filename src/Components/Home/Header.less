@@ -1,11 +1,17 @@
+@import "~semantic-ui-less/themes/default/globals/site.variables";
+@import "../../semantic-ui/site/globals/site.variables";
+
+
 .header-root{
 	margin-top: 0 !important;
 	height: 100vh;
+	//margin-bottom: 50vh !important;
 
 	.header-bg{
 		position: absolute;
 		left: 0;
 		top: 0;
+		z-index: -5;
 
 		background-image: url(/header-1.jpg);
 		background-size: cover;
@@ -23,6 +29,7 @@
 
 	.header-content{
 		position: relative;
+		z-index: 10;
 		margin-top: 4.6em;
 	}
 
@@ -31,6 +38,25 @@
 		margin-top: 30vh !important;
 		font-weight: 500;
 		font-family: 'Open Sans Condensed' !important;
+	}
+	.header-logo-description{
+		color: @offWhite;
+		font-size: 16px;
+	}
+
+	.events-preview-title{
+		font-family: 'Open Sans' !important;
+		margin-top: 70px;
+		margin-bottom: 30px;
+	}
+	.events-preview-wrapper{
+		display: flex;
+		width: 100vw;
+		position: absolute;
+		left: 0;
+
+		&.slow-transition{ transition: left 0.2s ease-out; }
+		&.quick-transition{ transition: left 0.1s ease-out; }
 	}
 
 }

@@ -51,3 +51,11 @@
 
 @defaultDuration : 0.15s;
 @defaultEasing   : ease-out;
+
+/*-------------------
+      Site Colors
+--------------------*/
+
+@shadowColor:				rgba(40, 40, 40, 0.1);
+@shadowColorDark:		rgba(40, 40, 40, 0.3);
+@offBlack:					#1d1d1d;

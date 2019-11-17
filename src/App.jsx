@@ -25,7 +25,7 @@ const App = () => {
         <Router>
           <Navbar authenticated={authUser}/>
 
-          <Route path={ROUTES.HOME}>
+          <Route exact path={ROUTES.HOME}>
             <Home />
           </Route>
 
