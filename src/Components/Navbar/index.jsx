@@ -44,7 +44,7 @@ class Navbar extends React.Component {
 			
 
 		return (
-			<Menu fixed="top" borderless size='huge' className="navbar-root">
+			<Menu borderless inverted size='huge' className="navbar-root">
 				<Container>
 					<Menu.Item as={NavLink} to={ROUTES.HOME} name="Home" className="nav-link" activeClassName="active" />
 					<Menu.Item as={NavLink} to={ROUTES.TICKETS} name="Tickets" className="nav-link" activeClassName="active" />

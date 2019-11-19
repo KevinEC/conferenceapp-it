@@ -5,6 +5,8 @@ import {
 } from 'react-router-dom';
 
 import './App.less';
+import { Container } from 'semantic-ui-react';
+
 
 import Home from "./Components/Home";
 import SignInPage from "./Components/SignIn";
@@ -23,7 +25,9 @@ const App = () => {
     <AuthUserContext.Consumer>
       {authUser =>
         <Router>
-          <Navbar authenticated={authUser}/>
+          <Container>
+            <Navbar authenticated={authUser}/>
+          </Container>
 
           <Route exact path={ROUTES.HOME}>
             <Home />

@@ -4,6 +4,8 @@ import { withFirebase } from "../../Middleware/Firebase";
 import { withAuthorization } from "../../Middleware/Session";
   
 import Hero from "./Hero.jsx";
+import Highlights from "./Highlights.jsx";
+import InfoPanels from "./InfoPanels.jsx";
 
 
 class Home extends React.Component {
@@ -20,7 +22,11 @@ class Home extends React.Component {
 
   render() {
     return (
-      <Hero />
+      <div>
+        <Hero />
+        <Highlights />
+        <InfoPanels />
+      </div>
     );
   }
 }

@@ -35,7 +35,7 @@
 
 	.header-logo{
 		font-size: 60px !important;
-		margin-top: 30vh !important;
+		margin-top: 25vh !important;
 		font-weight: 500;
 		font-family: 'Open Sans Condensed' !important;
 	}
@@ -46,17 +46,25 @@
 
 	.events-preview-title{
 		font-family: 'Open Sans' !important;
-		margin-top: 70px;
+		margin-top: 50px;
 		margin-bottom: 30px;
 	}
-	.events-preview-wrapper{
-		display: flex;
-		width: 100vw;
-		position: absolute;
-		left: 0;
+	.events-preview-container{
+		height: 200px;
+	
+		.events-preview-wrapper{
+			display: flex;
+			width: 100vw;
+			position: absolute;
+			left: 0;
 
-		&.slow-transition{ transition: left 0.2s ease-out; }
-		&.quick-transition{ transition: left 0.1s ease-out; }
+			&.slow-transition{ transition: left 0.2s ease-out; }
+			&.quick-transition{ transition: left 0.1s ease-out; }
+		}
+	}
+
+	.header-all-event-btn{
+		margin-top: 30px;
 	}
 
 }

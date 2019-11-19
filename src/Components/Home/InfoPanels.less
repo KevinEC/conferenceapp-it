@@ -1,0 +1,95 @@
+@import "~semantic-ui-less/themes/default/globals/site.variables";
+@import "../../semantic-ui/site/globals/site.variables";
+
+.infopanels-root{
+	margin-top: 0 !important;
+	z-index: 0;
+
+	.infopanels-border{
+		border: 2px solid @primaryColor;
+		margin: 4.5%;
+		padding: 2% 0;
+		width: 92%;
+		height: 92%;
+		z-index: 20;
+
+		.infopanels-container{
+			//position: relative;
+			padding: 10vh 0;
+
+
+			.infopanels-panel{
+				display: flex;
+				justify-content: space-between;
+
+				.infopanels-header{
+					font-size: 70px !important;
+
+					span{
+						display: block;
+					}
+				}
+
+				.infopanels-line{
+					display: inline-block;
+					height: 1px;
+					flex: 1 1 auto;
+					background-color: @offBlack;
+					margin-top: 130px;
+					margin-right: 60px;
+				}
+
+				.infopanels-about{
+					border: 1px solid @offBlack;
+					padding: 20px;
+					max-width: 25vw;
+
+
+					p{
+						font-size: 120%;
+						line-height: 180%;
+					}
+				}
+
+				.infopanels-map{
+					max-width: 35vw;
+				}
+
+			}
+		}
+
+		#infopanels-who{
+			margin-bottom: 200px;
+		}
+
+		#infopanels-location{
+			flex-direction: row-reverse;
+
+			.infopanels-line{
+				margin-top: 30px;
+				margin-left: 28vw;
+			}
+
+			.infopanels-map{
+				position: absolute;
+				margin-top: -100px;
+				z-index: -1;
+				left: 0;
+			}
+		}
+
+		#infopanels-tickets{
+			margin-top: 200px;
+			align-items: center;
+
+			.infopanels-header{
+				margin-top: 40px;
+			}
+			.infopanels-line{
+				margin-top: 0;
+				margin-bottom: 0;
+			}
+		}
+	}
+
+}

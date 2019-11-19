@@ -1,9 +1,11 @@
 import React from 'react';
 
-import "./Header.less";
+import "./Hero.less";
 
-import { Segment, Header, Container } from 'semantic-ui-react';
+import { Segment, Header, Container, Button, Icon } from 'semantic-ui-react';
 import EventPreview from './EventPreview.jsx';
+
+import * as ROUTES from "../../Constants/routes";
 
 const EVENTSDATA = [
 	{
@@ -46,6 +48,7 @@ class Hero extends React.Component {
 		}
 		this.eventsData = EVENTSDATA;
 		this.ticking = false;
+		this.eventsContainer = ".events-preview-container";
 	}
 
 	componentDidMount() {
@@ -55,7 +58,7 @@ class Hero extends React.Component {
 		this.initScrollListener();
   }
   componentWillUnmount() {
-    document.querySelector(".events-preview-container").removeEventListener('scroll', this.handleScroll);
+    document.querySelector(this.eventsContainer).removeEventListener('wheel', this.handleScroll);
   }
 
 	setSelectedEvent = (num) => {
@@ -100,7 +103,7 @@ class Hero extends React.Component {
 	};
 
 	initScrollListener = () => {
-		let sliderWrapper = document.querySelector(".events-preview-container");
+		let sliderWrapper = document.querySelector(this.eventsContainer);
     sliderWrapper.addEventListener('wheel', (e) => {
     	if(!this.ticking) {
     		window.requestAnimationFrame(() => {
@@ -145,6 +148,10 @@ class Hero extends React.Component {
 	        		{ events }
 	        	</div>
         	</div>
+        	<Button as="a" href={ROUTES.EVENTS} className="header-all-event-btn" icon labelPosition="left" inverted>
+        		<Icon name="arrow right"/>
+        		events
+        	</Button>
         </Container>
       </Segment>
 		);
