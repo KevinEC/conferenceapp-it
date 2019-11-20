@@ -1,0 +1,90 @@
+/*******************************
+     User Global Variables
+*******************************/
+
+@fontName:							'Open Sans';
+@fontName2:							'Open Sans Condensed';
+@fontName3:							'Josefin Sans';
+
+@headerFont:						@fontName3, 'Helvetica Neue', Helvetica, sans-serif;
+@pageFont:							@fontName, 'Helvetica Neue', Helvetica, sans-serif;
+
+@googleFontName    : 		@fontName;
+@googleFontName2    : 	@fontName2;
+@googleFontName3    : 	@fontName3;
+
+@importGoogleFonts : 		true;
+@googleFontSizes   : 		'400,700,400italic,700italic';
+@googleSubset      : 		'latin';
+
+@googleProtocol    : 		'https://';
+@googleFontRequest : 		'Josefin+Sans:400,700,400italic,700italic|Open+Sans:300italic,400|Open+Sans+Condensed:700';
+
+//'@{googleFontName}:@{googleFontSizes}|@{googleFontName2}:@{googleFontSizes}|@{googleFontName3}:@{googleFontSizes}';
+//'Josefin+Sans:400,700,400italic,700italic|Open+Sans:300italic,400|Open+Sans+Condensed:500';
+
+/*-------------------
+    Brand Colors
+--------------------*/
+
+@primaryColor        : 	#FFF27D;
+@secondaryColor      :	#6D4D62;
+
+@lightPrimaryColor   : 	#FFF8BF;
+@lightSecondaryColor : 	#E2B7D3;
+
+/*-------------------
+    Border Radius
+--------------------*/
+
+/* See Power-user section below
+   for explanation of @px variables
+*/
+@relativeBorderRadius: 	2px;
+@absoluteBorderRadius: 	2px;
+
+@defaultBorderRadius: 	@absoluteBorderRadius;
+
+/*-------------------
+     Transitions
+--------------------*/
+
+@defaultDuration : 0.15s;
+@defaultEasing   : ease-out;
+
+/*-------------------
+      Site Colors
+--------------------*/
+
+@shadowColor:				rgba(40, 40, 40, 0.1);
+@shadowColorDark:		rgba(40, 40, 40, 0.3);
+@offBlack:					#1d1d1d;
+
+/*---  Colors  ---*/
+@red         : #F98A8A;
+@orange      : #F9B88A;
+@yellow      : #FFE21F;
+@olive       : #D9E778;
+@green       : #2ECC40;
+@teal        : #6DFFFF;
+@blue        : #8AC3F9;
+@violet      : #A291FB;
+@purple      : #E98AF9;
+@pink        : #FF8EDF;
+@brown       : #D67C1C;
+@grey        : #DCDDDE;
+@black       : #545454;
+
+
+/*--------------
+  Page Heading
+---------------*/
+
+@headerFontWeight : @bold;
+@headerLineHeight : unit((18 / 14), em);
+
+@h1 : unit((80 / 14), rem);
+@h2 : unit((24 / 14), rem);
+@h3 : unit((18 / 14), rem);
+@h4 : unit((15 / 14), rem);
+@h5 : unit((14 / 14), rem);

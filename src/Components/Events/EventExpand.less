@@ -1,0 +1,64 @@
+@import "~semantic-ui-less/themes/default/globals/site.variables";
+@import "../../semantic-ui/site/globals/site.variables";
+
+.eventexpand-root{
+	display: flex;
+	flex-flow: column nowrap;
+	padding: 50px;
+	box-shadow: 0 0 10px @shadowColor;
+
+	.eventexpand-head{
+		display: flex;
+		flex-flow: row nowrap;
+		justify-content: space-between;
+
+		& > h2{
+			margin-bottom: 5px;
+		}
+	}
+	.eventexpand-author{
+		display: flex;
+		align-items: center;
+		font-weight: 600;
+		margin-bottom: 30px;
+
+		&::before{
+			content: '';
+			display: inline-block;
+			width: 30px;
+			height: 1px;
+			background-color: @offBlack;
+			margin-right: 8px;
+		}
+	}
+
+	.eventexpand-date{
+		font-weight: 600;
+		margin-left: 10px;
+	}
+	.eventexpand-time{
+		background-color: @black;
+		font-size: 120%;
+		width: fit-content;
+		color: @offWhite;
+		font-weight: 700;
+		padding: 4px;
+		margin-bottom: 10px;
+	}
+
+	.eventexpand-description{
+		margin-top: 20px;
+		margin-bottom: 50px;
+	}
+
+	.eventexpand-keynotes{
+		border-color: @primaryColor !important;
+		color: @offBlack !important;
+		font-weight: 400;
+	}
+	.eventexpand-keynotes:hover{
+		background-color: @primaryColor !important;
+		color: white !important;
+	}
+
+}

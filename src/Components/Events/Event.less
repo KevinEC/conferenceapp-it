@@ -1,0 +1,68 @@
+@import "~semantic-ui-less/themes/default/globals/site.variables";
+@import "../../semantic-ui/site/globals/site.variables";
+
+@verticalPadding: 30px;
+
+.event-root{
+	display: flex;
+	flex-flow: row nowrap;
+	padding: 40px @verticalPadding;
+	border: 2px solid transparent;
+
+	transition: box-shadow 0.15s ease-out,
+							border 0.15s ease-out;
+
+	.event-info{
+		display: flex;
+		flex-flow: column nowrap;
+		flex: 1 1 auto;
+
+		.event-name{
+			margin-bottom: 5px !important;
+		}
+
+		.event-author{
+			display: flex;
+			align-items: center;
+			font-weight: 600;
+
+			&::before{
+				content: '';
+				display: inline-block;
+				width: 30px;
+				height: 1px;
+				background-color: @offBlack;
+				margin-right: 8px;
+			}
+		}
+	}
+
+	.event-badges{
+		display: flex;
+		flex-flow: row wrap;
+		align-items: center;
+		justify-content: flex-end;
+		flex: 1 1 auto;
+	}
+}
+
+.event-root.active-event{
+	background-color: white;
+	border: 2px solid @primaryColor;
+	box-shadow: 0 0 25px rgba(@lightPrimaryColor, 0.3);
+	transition: box-shadow 0.1s ease-out;
+	margin: 0;
+}
+
+.event-root:hover, .event-root.active-event:hover{
+	border: 2px solid @subtleTransparentBlack;
+	background-color: white;
+	cursor: pointer;
+	box-shadow: 20px 30px 20px @shadowColor,
+							5px 10px 15px @shadowColor;
+}
+
+.event-root.active-event:hover{
+	border: 2px solid @primaryColor;
+	margin: 0;
+}
