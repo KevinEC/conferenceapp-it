@@ -31,11 +31,6 @@ class Hero extends React.Component {
 
 		this.initScrollListener();
 		this.getEvents();
-
-		if(this.state.nEvents) {
-			let minOffset = (this.state.nEvents - 1)*-450; let maxOffset = 0;
-			this.setState({minOffset: minOffset, maxOffset: maxOffset});
-		}
   }
   componentWillUnmount() {
     document.querySelector(this.eventsContainer).removeEventListener('wheel', this.handleScroll);
@@ -54,7 +49,15 @@ class Hero extends React.Component {
 
 	getEvents = async () => {
 		let data = await this.props.firebase.db.getAll('events');
-		this.setState({eventsData: data, nEvents: data.length});
+		
+		// setting scroll limits
+		let minOffset = (data.length - 1)*-450; let maxOffset = 0;
+		this.setState({
+			eventsData: data, 
+			nEvents: data.length, 
+			minOffset: minOffset, 
+			maxOffset: maxOffset
+		});
 	};
 
 	handleScroll = (deltaX) => {
