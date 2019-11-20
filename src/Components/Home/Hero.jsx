@@ -1,35 +1,11 @@
 import React from 'react';
-
 import "./Hero.less";
+import { withFirebase } from "../../Middleware/Firebase";
 
 import { Segment, Header, Container, Button, Icon } from 'semantic-ui-react';
 import EventPreview from './EventPreview.jsx';
 
 import * as ROUTES from "../../Constants/routes";
-
-const EVENTSDATA = [
-	{
-		name: "Modern Animations and Performance",
-		author: "Kelly Kagan"
-	},
-	{
-		name: "Javascript Frameworks",
-		author: "Dave Davidsson"
-	},
-	{
-		name: "Dynamic Frontend Coding",
-		author: "Steve Klein"
-	},
-	{
-		name: "Why UX is Overlooked",
-		author: "Amanda Fantano"
-	},
-	{
-		name: "Detached Frontend Solutions",
-		author: "Dave Smith"
-	},
-	
-];
 
 class Hero extends React.Component {
 
@@ -44,18 +20,22 @@ class Hero extends React.Component {
 			offset: 0,
 			offsetStyle: {},
 			ticking: false,
-			nEvents: EVENTSDATA.length
+			nEvents: null,
+			eventsData: null,
 		}
-		this.eventsData = EVENTSDATA;
 		this.ticking = false;
 		this.eventsContainer = ".events-preview-container";
 	}
 
 	componentDidMount() {
-		let minOffset = (this.state.nEvents - 1)*-450; let maxOffset = 0;
-		this.setState({minOffset: minOffset, maxOffset: maxOffset});
 
 		this.initScrollListener();
+		this.getEvents();
+
+		if(this.state.nEvents) {
+			let minOffset = (this.state.nEvents - 1)*-450; let maxOffset = 0;
+			this.setState({minOffset: minOffset, maxOffset: maxOffset});
+		}
   }
   componentWillUnmount() {
     document.querySelector(this.eventsContainer).removeEventListener('wheel', this.handleScroll);
@@ -70,6 +50,11 @@ class Hero extends React.Component {
 			current: num, 
 			transition: 'slow-transition'
 		});
+	};
+
+	getEvents = async () => {
+		let data = await this.props.firebase.db.getAll('events');
+		this.setState({eventsData: data, nEvents: data.length});
 	};
 
 	handleScroll = (deltaX) => {
@@ -117,24 +102,32 @@ class Hero extends React.Component {
 	    	this.ticking = true;
     	}
     });
+	};
+
+	createPreviews = () => {
+		let events = []; 
+		if(this.state.eventsData) {
+			let i = 0;
+
+			for(let event of this.state.eventsData) {
+				events.push(
+					<EventPreview 
+						name={event.data.name} 
+						author={event.data.author}
+						key={i} 
+						num={i} 
+						passSelectedEvent={this.setSelectedEvent}
+					/>
+				);
+				i++;
+			}
+		}
+		return events;
 	}
 
 
 	render() {
-		let events = []; let i = 0;
-
-		for(let event of this.eventsData) {
-			events.push(
-				<EventPreview 
-					name={event.name} 
-					author={event.author}
-					key={i} 
-					num={i} 
-					passSelectedEvent={this.setSelectedEvent}
-				/>
-			);
-			i++;
-		}
+		let events = this.createPreviews();
 
 		return (
 			<Segment vertical className="header-root">
@@ -158,4 +151,4 @@ class Hero extends React.Component {
 	}
 }
 
-export default Hero;
+export default withFirebase(Hero);

@@ -59,3 +59,32 @@
 @shadowColor:				rgba(40, 40, 40, 0.1);
 @shadowColorDark:		rgba(40, 40, 40, 0.3);
 @offBlack:					#1d1d1d;
+
+/*---  Colors  ---*/
+@red         : #F98A8A;
+@orange      : #F9B88A;
+@yellow      : #FFE21F;
+@olive       : #D9E778;
+@green       : #2ECC40;
+@teal        : #6DFFFF;
+@blue        : #8AC3F9;
+@violet      : #A291FB;
+@purple      : #E98AF9;
+@pink        : #FF8EDF;
+@brown       : #D67C1C;
+@grey        : #DCDDDE;
+@black       : #545454;
+
+
+/*--------------
+  Page Heading
+---------------*/
+
+@headerFontWeight : @bold;
+@headerLineHeight : unit((18 / 14), em);
+
+@h1 : unit((80 / 14), rem);
+@h2 : unit((24 / 14), rem);
+@h3 : unit((18 / 14), rem);
+@h4 : unit((15 / 14), rem);
+@h5 : unit((14 / 14), rem);

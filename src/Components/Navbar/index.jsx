@@ -21,33 +21,56 @@ const accountMenuSignedOut =
 		<Menu.Item as={NavLink} to={ROUTES.SIGN_IN} name="Sign In" className="nav-link" activeClassName="active" />
 	</Menu.Menu>;
 
+
 class Navbar extends React.Component {
 	constructor(props) {
 		super(props);
 
 		this.state = {
-			authenticated: this.props.authenticated
+			authenticated: this.props.authenticated,
+			route: this.props.location.pathname
 		}
 	}
 
 	static getDerivedStateFromProps(nextProps, prevState) {
 		return {
-			authenticated: nextProps.authenticated
+			authenticated: nextProps.authenticated,
+			route: nextProps.location.pathname
 		};
+	}
+
+	setBackground = (state) => {
+		let className = '';
+		if(state.route === ROUTES.HOME) {
+			className = 'navbar-transparent inverted';
+		} else {
+			className = 'navbar-primary';
+		}
+		return className;
+	}
+
+	setAccountMenu = (state) => {
+		let accountMenu;
+		if(this.state.authenticated) { accountMenu = accountMenuSignedIn; }
+		else { accountMenu = accountMenuSignedOut; }
+
+		return accountMenu;
 	}
 
 	render() {
 
-		let accountMenu = '';
-		if(this.state.authenticated) { accountMenu = accountMenuSignedIn; }
-		else { accountMenu = accountMenuSignedOut; }
-			
+		let accountMenu = this.setAccountMenu(this.state);
+		let backgroundClass = this.setBackground(this.state);
+
+		// additonal logic for active class needed
+		// https://stackoverflow.com/questions/47879663/root-navlink-always-get-active-class-react-router-dom
 
 		return (
-			<Menu borderless inverted size='huge' className="navbar-root">
+			<Menu borderless={true} size='huge' className={"navbar-root " + backgroundClass}>
 				<Container>
 					<Menu.Item as={NavLink} to={ROUTES.HOME} name="Home" className="nav-link" activeClassName="active" />
 					<Menu.Item as={NavLink} to={ROUTES.TICKETS} name="Tickets" className="nav-link" activeClassName="active" />
+					<Menu.Item as={NavLink} to={ROUTES.EVENTS} name="Events" className="nav-link" activeClassName="active" />
 					{accountMenu}
 				</Container>
 			</Menu>

@@ -8,11 +8,12 @@ import './App.less';
 import { Container } from 'semantic-ui-react';
 
 
-import Home from "./Components/Home";
+import Navbar from "./Components/Navbar";
 import SignInPage from "./Components/SignIn";
 
-import Tickets from "./Components/Tickets/Tickets"
-import Navbar from "./Components/Navbar";
+import Home from "./Components/Home";
+import Tickets from "./Components/Tickets/Tickets";
+import Events from "./Components/Events";
 
 
 import { AuthUserContext, withAuthentication } from "./Middleware/Session";
@@ -25,18 +26,13 @@ const App = () => {
     <AuthUserContext.Consumer>
       {authUser =>
         <Router>
-          <Container>
-            <Navbar authenticated={authUser}/>
-          </Container>
+          <Navbar authenticated={authUser}/>
 
-          <Route exact path={ROUTES.HOME}>
-            <Home />
-          </Route>
+          <Route exact path={ROUTES.HOME} component={Home} />
+          <Route path={ROUTES.TICKETS} component={Tickets} />
+          <Route path={ROUTES.EVENTS} component={Events} />
 
           <Route path={ROUTES.SIGN_IN} component={SignInPage} />
-
-          <Route path={ROUTES.TICKETS} component={Tickets} />
-          
         </Router>
       }
     </AuthUserContext.Consumer>
