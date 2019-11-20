@@ -9,9 +9,10 @@ import './App.css';
 import Home from "./Components/Home.jsx";
 import SignInPage from "./Components/SignIn";
 import Tickets from "./Components/Tickets/Tickets";
+import {RoomsEvent} from "./Components/RoomsEvent/RoomsEvent"
 import { AuthUserContext, withAuthentication } from "./Middleware/Session";
 import 'semantic-ui-css/semantic.min.css';
-import * as ROUTES from "./Routes/routes";
+
 
 
 import * as ROUTES from "./Constants/routes";
@@ -29,7 +30,10 @@ const App = () => {
 
             <Route path={ROUTES.SIGN_IN} component={SignInPage} />
 
-            <Route path={ROUTES.TICKETS} component={Tickets} />
+            <Route path={ROUTES.TICKETS} >
+              <Tickets authenticated={authUser}/>
+            </Route>
+            <Route path={ROUTES.ROOMS} component={RoomsEvent} />
           </div>
         </Router>
       }

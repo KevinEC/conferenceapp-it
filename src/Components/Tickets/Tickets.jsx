@@ -4,9 +4,7 @@ import { BuyTicketForm } from "./BuyTicketForm/BuyTicketForm";
 import "./Tickets.css";
 
 class Tickets extends Component {
-  state = {};
-
-  showModal() {}
+ 
   render() {
     return (
       <div className="ui container">
