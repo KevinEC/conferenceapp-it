@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 
 import './index.css';
+import 'semantic-ui-less/semantic.less';
 import * as serviceWorker from './serviceWorker';
 
 import App from './App.jsx';
