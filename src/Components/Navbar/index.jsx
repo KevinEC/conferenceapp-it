@@ -46,7 +46,7 @@ class Navbar extends React.Component {
 			className = 'navbar-primary';
 		}
 		return className;
-	}
+	};
 
 	setAccountMenu = (state) => {
 		let accountMenu;
@@ -54,7 +54,7 @@ class Navbar extends React.Component {
 		else { accountMenu = accountMenuSignedOut; }
 
 		return accountMenu;
-	}
+	};
 
 	render() {
 
