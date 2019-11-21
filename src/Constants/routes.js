@@ -1,5 +1,7 @@
 export const HOME = '/';
 export const TICKETS = '/tickets';
+export const ROOMS = '/rooms';
+
 export const EVENTS = '/events';
 export const KEYNOTE = '/events/:name/keynote';
 

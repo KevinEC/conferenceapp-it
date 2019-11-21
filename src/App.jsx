@@ -13,11 +13,15 @@ import SignInPage from "./Components/SignIn";
 
 import Home from "./Components/Home";
 import Tickets from "./Components/Tickets/Tickets";
+import {RoomsEvent} from "./Components/RoomsEvent/RoomsEvent"
+import { AuthUserContext, withAuthentication } from "./Middleware/Session";
+import 'semantic-ui-css/semantic.min.css';
+
 import Events from "./Components/Events";
 import Keynote from "./Components/Events/Keynote";
 
 
-import { AuthUserContext, withAuthentication } from "./Middleware/Session";
+
 
 import * as ROUTES from "./Constants/routes";
 
@@ -34,6 +38,11 @@ const App = () => {
           <Route exact path={ROUTES.EVENTS} component={Events} />
           <Route path={ROUTES.KEYNOTE} component={Keynote} />
 
+            <Route path={ROUTES.TICKETS} >
+              <Tickets authenticated={authUser}/>
+            </Route>
+            <Route path={ROUTES.ROOMS} component={RoomsEvent} />
+          
           <Route path={ROUTES.SIGN_IN} component={SignInPage} />
         </Router>
       }
