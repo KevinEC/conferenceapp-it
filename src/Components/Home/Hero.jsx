@@ -49,6 +49,7 @@ class Hero extends React.Component {
 
 	getEvents = async () => {
 		let data = await this.props.firebase.db.getAll('events');
+		console.log("data: ", data);
 		
 		// setting scroll limits
 		let minOffset = (data.length - 1)*-450; let maxOffset = 0;

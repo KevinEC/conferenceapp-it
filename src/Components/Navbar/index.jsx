@@ -1,8 +1,7 @@
 import React from 'react';
 import styles from './styles.less';
 
-import {withRouter} from 'react-router-dom';
-import { NavLink } from "react-router-dom";
+import { withRouter, NavLink } from 'react-router-dom';
 
 import { Grid , Container, Menu } from "semantic-ui-react";
 

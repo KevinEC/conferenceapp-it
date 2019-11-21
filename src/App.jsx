@@ -14,6 +14,7 @@ import SignInPage from "./Components/SignIn";
 import Home from "./Components/Home";
 import Tickets from "./Components/Tickets/Tickets";
 import Events from "./Components/Events";
+import Keynote from "./Components/Events/Keynote";
 
 
 import { AuthUserContext, withAuthentication } from "./Middleware/Session";
@@ -30,7 +31,8 @@ const App = () => {
 
           <Route exact path={ROUTES.HOME} component={Home} />
           <Route path={ROUTES.TICKETS} component={Tickets} />
-          <Route path={ROUTES.EVENTS} component={Events} />
+          <Route exact path={ROUTES.EVENTS} component={Events} />
+          <Route path={ROUTES.KEYNOTE} component={Keynote} />
 
           <Route path={ROUTES.SIGN_IN} component={SignInPage} />
         </Router>

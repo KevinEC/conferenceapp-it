@@ -1,7 +1,11 @@
 import React from 'react';
 import "./EventExpand.less";
 
+import { withRouter, Link } from "react-router-dom";
+import camelCase from "lodash/camelCase"; 
+
 import { Header, Button, Icon } from 'semantic-ui-react';
+
 class EventExpand extends React.Component {
 
 	constructor(props) {
@@ -10,19 +14,20 @@ class EventExpand extends React.Component {
 	}
 
 	setContent = () => {
-		let name, author, description, date, time;
+		let name, author, description, date, time, id;
 		if(this.props.data) {
+			id = this.props.eventId;
 			name = this.props.data.name;
 			author = this.props.data.author;
 			description = this.props.data.description;
 			date = (new Date(this.props.data.time.seconds * 1000)).toDateString();
 			time = (new Date(this.props.data.time.seconds * 1000)).toTimeString().substring(0,5);
 		}
-		return [name, author, description, date, time];
+		return [name, author, description, date, time, id];
 	};
 
 	render() {
-		let [name, author, description, date, time] = this.setContent();
+		let [name, author, description, date, time, id] = this.setContent();
 
 		return (
 			<div className="eventexpand-root">
@@ -38,11 +43,16 @@ class EventExpand extends React.Component {
 				<p className="eventexpand-description">{description}</p>
 				<div className="eventexpand-buttons">
 					<Button primary className="eventexpand-attend">Attend</Button>
-					<Button inverted primary className="eventexpand-keynotes">Keynotes</Button>
+					<Button 
+						as={Link} 
+						to={`${this.props.location.pathname}/${camelCase(name)}/keynote`}
+						inverted 
+						primary 
+						className="eventexpand-keynotes">Keynotes</Button>
 				</div>
 			</div>
 		);
 	}
 }
 
-export default EventExpand;
+export default withRouter(EventExpand);

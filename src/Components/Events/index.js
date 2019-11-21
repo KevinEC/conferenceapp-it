@@ -66,7 +66,7 @@ class Events extends React.Component {
 
 				let eventElement = 	
 				<Event 
-						name={event.data.name} 
+						name={event.data.name}
 						author={event.data.author}
 						room={event.data.room}
 						type={event.data.type}

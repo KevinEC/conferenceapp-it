@@ -10,6 +10,7 @@ class Firestore {
 
     let connection = this.db.collection(documentName);
     let data = await connection.get();
+    console.log("data", data);
     
     for(const doc of data.docs) {
       result.push({
@@ -18,6 +19,14 @@ class Firestore {
       });
     }
     return result;
+  }
+
+  async getDocument(documentName, id) {
+    let connection = this.db.collection(documentName).doc(id);
+    let docReference = await connection.get();
+    let data = docReference.data();
+    
+    return data;
   }
 
 }
