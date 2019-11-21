@@ -1,0 +1,277 @@
+[33mcommit 97481f65101be38377a45b7a000b6c829ef9c496[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m, [m[1;31morigin/master[m[33m, [m[1;31morigin/HEAD[m[33m)[m
+Merge: 6d0f52b f761a06
+Author: propeus00 <57322492+propeus00@users.noreply.github.com>
+Date:   Wed Nov 20 23:56:15 2019 +0000
+
+    Merge branch 'master' of https://github.com/KevinEC/conferenceapp-it
+
+[33mcommit 6d0f52b043f4d1fcc7a7ac01ef188755b281fdf2[m
+Author: propeus00 <57322492+propeus00@users.noreply.github.com>
+Date:   Wed Nov 20 23:49:40 2019 +0000
+
+    Tickets&Rooms pages
+
+[33mcommit f761a060761c5eacba6c1727d296a3fe439eca78[m
+Author: kevinec <k.evans.c@gmail.com>
+Date:   Wed Nov 20 17:42:24 2019 +0000
+
+    Hero sidescroll broke during refractor. fixed
+
+[33mcommit 605297312e3b08ec0e612485e6ae60db0afc5688[m
+Author: kevinec <k.evans.c@gmail.com>
+Date:   Wed Nov 20 17:38:36 2019 +0000
+
+    events page mostly done. fetching data from firebase, sorting events per room and splitscreen info displaying
+
+[33mcommit 99935883c891b28e87213c2aa4fdf618a219247e[m
+Author: kevinec <k.evans.c@gmail.com>
+Date:   Tue Nov 19 18:20:19 2019 +0000
+
+    home page done. no functional data yet
+
+[33mcommit c99d902b497f505a2fc2ddd5750a9005e1065015[m
+Author: kevinec <k.evans.c@gmail.com>
+Date:   Sun Nov 17 23:15:55 2019 +0000
+
+    header slider got some slider action
+
+[33mcommit a3f7f2a2b88a8a3581bd20b5c2265f4a74e25370[m
+Author: kevinec <k.evans.c@gmail.com>
+Date:   Sat Nov 16 23:29:33 2019 +0000
+
+    more Homepage styling. Importing fonts are hard
+
+[33mcommit 4a22ca60709a44b9f90eadbf8db2f80a037b53bb[m
+Merge: e5f968d e7909ce
+Author: kevinec <k.evans.c@gmail.com>
+Date:   Sat Nov 16 17:52:49 2019 +0000
+
+    merged custom semantic setup with master
+
+[33mcommit e5f968d41a3ace381cc668ea1200b0532daa773a[m
+Author: kevinec <k.evans.c@gmail.com>
+Date:   Sat Nov 16 17:47:32 2019 +0000
+
+    micro change
+
+[33mcommit d804b02baeca9cff2daa0e9126c67fe83e17332e[m
+Author: kevinec <k.evans.c@gmail.com>
+Date:   Sat Nov 16 17:44:31 2019 +0000
+
+    merging
+
+[33mcommit 2cb611152d548e574187c4e3f537ec8bd0f47ece[m
+Merge: 700784b 4652d7b
+Author: kevinec <k.evans.c@gmail.com>
+Date:   Sat Nov 16 17:42:55 2019 +0000
+
+    Merge branch 'master' of https://github.com/KevinEC/conferenceapp-it
+
+[33mcommit e7909ce411f3d772526a7f1fecad2a2cdd5d36a4[m
+Author: kevinec <k.evans.c@gmail.com>
+Date:   Sat Nov 16 17:42:24 2019 +0000
+
+    semantic ui react implemented with less and craco. Implemented NavigationBar
+
+[33mcommit 4652d7bd68307d23a7a662c7e816bb28dc150e84[m
+Author: propeus00 <57322492+propeus00@users.noreply.github.com>
+Date:   Fri Nov 15 19:08:44 2019 +0000
+
+    Reintroduced app.jsx header AuthUserContext
+
+[33mcommit 22cb3c2265c51fc50c56af0e7ffac8ce0563938c[m
+Author: propeus00 <57322492+propeus00@users.noreply.github.com>
+Date:   Fri Nov 15 18:36:01 2019 +0000
+
+    Ticket final version
+
+[33mcommit 700784b8c3f2e5982ca61169801502cd1d0a0499[m
+Author: kevinec <k.evans.c@gmail.com>
+Date:   Fri Nov 15 14:57:59 2019 +0000
+
+    created Home page folder
+
+[33mcommit f361244c108c81b2998551de9bd5f10e5401300c[m
+Author: kevinec <k.evans.c@gmail.com>
+Date:   Fri Nov 15 14:37:32 2019 +0000
+
+    typo in App.jsx
+
+[33mcommit 68e047df3c08bafb209d958a022ff0206ea1954c[m
+Merge: 92abd89 610b220
+Author: kevinec <k.evans.c@gmail.com>
+Date:   Fri Nov 15 14:36:42 2019 +0000
+
+    merged with ticket update
+
+[33mcommit 92abd898d5ddc5b5f4bd1a1d12117162981bcc0f[m
+Author: kevinec <k.evans.c@gmail.com>
+Date:   Fri Nov 15 14:34:13 2019 +0000
+
+    refractor of Firebase logic
+
+[33mcommit a6ef2dbf8f3183ae071853056661cc9531abc34f[m
+Author: kevinec <k.evans.c@gmail.com>
+Date:   Fri Nov 15 14:30:39 2019 +0000
+
+    refractoring is hard
+
+[33mcommit 79e26240783be2fa73e6b53cb6c75c26026509b8[m
+Author: kevinec <k.evans.c@gmail.com>
+Date:   Fri Nov 15 13:43:18 2019 +0000
+
+    user authentication and authorization implemented
+
+[33mcommit 610b220fc31537823ca39595ae447e3fb028f478[m[33m ([m[1;32mStashLorenzo[m[33m)[m
+Author: propeus00 <57322492+propeus00@users.noreply.github.com>
+Date:   Thu Nov 14 22:24:10 2019 +0000
+
+    Added Sematic-ui-React package+Tickets Component start version
+
+[33mcommit 84e30da7f1f436cab6a88e7937543e868da80694[m
+Author: propeus00 <57322492+propeus00@users.noreply.github.com>
+Date:   Thu Nov 14 21:17:00 2019 +0000
+
+    semantic ui package added
+
+[33mcommit 51aa80598eaecf722d3e5594a04773cce0e8c5c9[m
+Author: propeus00 <57322492+propeus00@users.noreply.github.com>
+Date:   Thu Nov 14 20:33:39 2019 +0000
+
+    Added semantic ui from npm
+
+[33mcommit dd1c289f4e4361adbdb4e3e7e08537fd67fdd641[m
+Author: kevinec <k.evans.c@gmail.com>
+Date:   Thu Nov 14 17:30:55 2019 +0000
+
+    login now available. session implementation to do.
+
+[33mcommit e3b0851904fe7f893a6dc9a97f2b9511e88da223[m
+Author: kevinec <k.evans.c@gmail.com>
+Date:   Thu Nov 14 16:07:53 2019 +0000
+
+    included and implemented router structure
+
+[33mcommit 4875753c55f80a5b7910090074d64c9a66b4075f[m
+Merge: 2d3a321 37e2120
+Author: kevinec <k.evans.c@gmail.com>
+Date:   Thu Nov 14 15:26:31 2019 +0000
+
+    Merge branch 'master' of https://github.com/KevinEC/conferenceapp-it
+
+[33mcommit 2d3a321ac45b2ccf8046d5a7ab0a02be8d68ff3e[m
+Author: kevinec <k.evans.c@gmail.com>
+Date:   Thu Nov 14 15:25:16 2019 +0000
+
+    updated .gitignore
+
+[33mcommit 37e2120ffe08ec07f17a0fe9aa853e831df72eb7[m
+Merge: d4159f1 137d44e
+Author: propeus00 <57322492+propeus00@users.noreply.github.com>
+Date:   Thu Nov 14 13:55:54 2019 +0000
+
+    Merge branch 'master' of https://github.com/KevinEC/conferenceapp-it
+
+[33mcommit d4159f1e604a4519e300b1ff01e353289e3d1a8f[m
+Author: propeus00 <57322492+propeus00@users.noreply.github.com>
+Date:   Thu Nov 14 13:51:39 2019 +0000
+
+    Chnage header home message
+
+[33mcommit 137d44e12b080a0992f8afaca35b960dae5f7c91[m
+Author: KevinEC <KevinEC@users.noreply.github.com>
+Date:   Thu Nov 14 13:39:49 2019 +0000
+
+    Delete .env
+
+[33mcommit e3f4f07f9c136790d35ee69fb5f98345e5f909ca[m
+Author: kevinec <k.evans.c@gmail.com>
+Date:   Thu Nov 14 13:09:22 2019 +0000
+
+    further firebase structure
+
+[33mcommit 94c27744d2e0dfc22a9a7b72f1362ec8661068b1[m
+Author: kevinec <k.evans.c@gmail.com>
+Date:   Thu Nov 14 11:06:45 2019 +0000
+
+    async firestore calls now works
+
+[33mcommit fc5166904c3d52549de61fc0058901b92a83b2fb[m
+Merge: 4ac0592 154139c
+Author: kevinec <k.evans.c@gmail.com>
+Date:   Tue Nov 12 18:22:41 2019 +0000
+
+    merged readme lol
+
+[33mcommit 4ac0592ee58a43318750ad4651e1e7ecf7aa7788[m
+Author: kevinec <k.evans.c@gmail.com>
+Date:   Tue Nov 12 18:21:01 2019 +0000
+
+    Firebase setup. Configuring Reactcontext/provider structure for easy Firebase imports
+
+[33mcommit aba2f5fddb134436d1bf04ec5cfd557d6d439706[m
+Author: kevinec <k.evans.c@gmail.com>
+Date:   Tue Nov 12 17:16:44 2019 +0000
+
+    change in Dockerfile. Copying of package.json during container init copied to wrong path so npm i failed. Project Structure update. Firebase config
+
+[33mcommit 4567eafb8df457c052fb3cf57af0aae33972348c[m
+Author: kevinec <k.evans.c@gmail.com>
+Date:   Tue Nov 12 15:29:36 2019 +0000
+
+    updated README. Run dev Server easier
+
+[33mcommit 154139c2c6d3cdb82ddf97b5e6072d65514dad09[m
+Author: KevinEC <KevinEC@users.noreply.github.com>
+Date:   Sun Nov 10 16:49:29 2019 +0000
+
+    Update README.md
+
+[33mcommit 28062ec8129d248bed7804be84811ac58742adc5[m
+Author: kevinec <k.evans.c@gmail.com>
+Date:   Sun Nov 10 16:47:53 2019 +0000
+
+    more READEME sytnax
+
+[33mcommit 4b9002cc2c1d70958d6d94c805786687681ec1ee[m
+Author: Kevin Evans <k.evans.c@gmail.com>
+Date:   Sun Nov 10 16:44:36 2019 +0000
+
+    formatting for README
+
+[33mcommit 91f99ff76f7b3e6e97cfb71882826f30965a7b88[m
+Author: Kevin Evans <k.evans.c@gmail.com>
+Date:   Sun Nov 10 16:41:33 2019 +0000
+
+    updated the README
+
+[33mcommit 064e05cf190efe9117b1d08626dc2a7791e982a4[m
+Author: Kevin Evans <k.evans.c@gmail.com>
+Date:   Sun Nov 10 16:26:39 2019 +0000
+
+    pls remove
+
+[33mcommit 83af0a6212a50aab879ebb79ec6cf39260820e23[m
+Merge: 7a3764a 1abb2cb
+Author: Kevin Evans <k.evans.c@gmail.com>
+Date:   Sun Nov 10 16:26:15 2019 +0000
+
+    Merge branch 'master' of https://github.com/KevinEC/conferenceapp-it
+
+[33mcommit 7a3764ad8adb4752366a3c9a6998b7de4310c5ba[m
+Author: Kevin Evans <k.evans.c@gmail.com>
+Date:   Sun Nov 10 16:15:14 2019 +0000
+
+    necessary files for Docker setup
+
+[33mcommit 1abb2cb34604194d1ec80e198f685e60a3b82ae6[m
+Author: Kevin Evans <k.evans.c@gmail.com>
+Date:   Sun Nov 10 16:15:14 2019 +0000
+
+    necessary files for Docker setup
+
+[33mcommit 663351cd9aaa4a16b54a8591f31bdd872c45376d[m
+Author: Kevin Evans <k.evans.c@gmail.com>
+Date:   Sun Nov 10 13:39:12 2019 +0000
+
+    Initial commit from Create React App
