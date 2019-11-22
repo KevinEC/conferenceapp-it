@@ -6,6 +6,7 @@ import { withRouter } from "react-router-dom";
 import { withFirebase } from "../../../Middleware/Firebase";
 
 import KeynoteHeader from "./KeynoteHeader.jsx";
+import KeynoteQuestions from "./KeynoteQuestions.jsx";
 
 import { Header, Button, Icon, Segment, Container } from 'semantic-ui-react';
 
@@ -17,17 +18,42 @@ class Keynote extends React.Component {
 		this.state = {
 			id: this.props.match.params.name,
 			keynote: null,
+			selectedHeader: null
 		};
+		this.questionsNode = null;
 	}
 
 	componentDidMount() {
 		this.getKeynote();
+
+		this.questionsNode = document.querySelector(".keynote-questions-wrapper");
+
+		document.documentElement.style.setProperty('--scroll', 'overflow-y');
+		document.documentElement.style.setProperty('--body-bg-color', '#3d3d3d');
+	};
+
+	componentWillUnmount() {
+		document.documentElement.style.setProperty('--scroll', 'initial');
+		document.documentElement.style.setProperty('--body-bg-color', 'transparent');
 	}
 
 	getKeynote = async () => {
 		let data = await this.props.firebase.db.getDocument('keynotes', this.state.id);
-		console.log(data);
 		this.setState({keynote: data.keynote});
+	};
+
+	setSelectedHead = (head) => {
+		this.setState({selectedHeader: head});
+	};
+
+	selectedHeaderComputed = () => {
+		if(this.state.selectedHeader) return this.state.selectedHeader;
+		return null;
+	};
+
+	layoutComputed = () => {
+		if(this.state.selectedHeader) return 'split-view';
+		else return '';
 	};
 
 	createKeynoteHeaders = () => {
@@ -36,9 +62,24 @@ class Keynote extends React.Component {
 			let header; let i = 0;
 			for(let header of this.state.keynote) {
 				if(header.subheaders) {
-					header = <KeynoteHeader headlevel="h2" title={header.title} subheaders={header.subheaders} key={i} />;
+					header = 
+						<KeynoteHeader 
+							headlevel="h2" 
+							title={header.title} 
+							subheaders={header.subheaders} 
+							setSelectedHead={this.setSelectedHead}
+							questionsNode={this.questionsNode} 
+							key={i} 
+						/>;
 				} else {
-					header = <KeynoteHeader headlevel="h2" title={header} key={i} />;
+					header = 
+						<KeynoteHeader 
+							headlevel="h2" 
+							title={header} 
+							setSelectedHead={this.setSelectedHead} 
+							questionsNode={this.questionsNode} 
+							key={i} 
+						/>;
 				}
 
 				headers.push(header); i++;
@@ -50,10 +91,12 @@ class Keynote extends React.Component {
 	render() {
 		let name = this.props.match.params.name;
 		let headers = this.createKeynoteHeaders();
+		let layout = this.layoutComputed();
+		let selectedHeader = this.selectedHeaderComputed();
 
 		return (
-			<Segment vertical inverted className="keynote-root">
-				<Container>
+			<Segment vertical inverted className={"keynote-root " + layout}>
+				<Container className="keynote-container">
 					<div className="keynote-content-wrapper">
 						<Header inverted as="h2" className="keynote-title">Keynote</Header>
 						<Header as="h1" inverted className="keynote-name">
@@ -64,8 +107,8 @@ class Keynote extends React.Component {
 							{ headers }
 						</div>
 					</div>
-					<div className="keynote-question-wrapper">
-
+					<div className="keynote-questions-wrapper">
+						<KeynoteQuestions heading={selectedHeader} />
 					</div>
 				</Container>
 			</Segment>

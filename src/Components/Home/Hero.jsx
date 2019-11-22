@@ -61,7 +61,7 @@ class Hero extends React.Component {
 		});
 	};
 
-	handleScroll = (deltaX) => {
+	scrollHelper = (deltaX) => {
 		let transition = 'quick-transition';
 		// determine newOffset from current scroll state
 		let currentOffset = this.state.offset;
@@ -93,20 +93,22 @@ class Hero extends React.Component {
 
 	initScrollListener = () => {
 		let sliderWrapper = document.querySelector(this.eventsContainer);
-    sliderWrapper.addEventListener('wheel', (e) => {
-    	if(!this.ticking) {
-    		window.requestAnimationFrame(() => {
-    			//console.log("event: ", e);
-
-	    		//this.setState({ticking: false});
-	    		this.ticking = false;
-	    		this.handleScroll(-e.deltaX);
-	    	});
-	    	//this.setState({ticking: true});
-	    	this.ticking = true;
-    	}
-    });
+    sliderWrapper.addEventListener('wheel', this.handleScroll);
 	};
+
+	handleScroll = (e) => {
+  	if(!this.ticking) {
+  		window.requestAnimationFrame(() => {
+  			//console.log("event: ", e);
+
+    		//this.setState({ticking: false});
+    		this.ticking = false;
+    		this.scrollHelper(-e.deltaX);
+    	});
+    	//this.setState({ticking: true});
+    	this.ticking = true;
+  	}
+  };
 
 	createPreviews = () => {
 		let events = []; 

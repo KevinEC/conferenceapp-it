@@ -1,0 +1,34 @@
+@import "~semantic-ui-less/themes/default/globals/site.variables";
+@import "../../../semantic-ui/site/globals/site.variables";
+
+.keynotequestions-root{
+	position: absolute;
+	top: 0;
+	right: 0;
+	height: 100%;
+	width: 35%;
+
+	.keynotequestions-sticky{
+		position: sticky;
+		padding: 0 8%;
+		padding-top: 10vh;
+		top: 0;
+		height: 100vh;
+		background-color: @black;
+
+		.keynotequestions-heading{
+			color: @primaryColor;
+		}
+
+		.keynotequestions-input{
+			width: 100% !important;
+
+			& > input{
+				padding: 20px !important;
+				border-radius: 10px !important;
+				background-color: @darkBlack;
+				color: @offWhite !important;
+			}
+		}
+	}
+}

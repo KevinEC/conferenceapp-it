@@ -1,16 +1,145 @@
+@import "~semantic-ui-less/themes/default/globals/site.variables";
+@import "../../../semantic-ui/site/globals/site.variables";
+
 .keynoteheader-root{
 	margin-bottom: 20px;
+	position: relative;
 
 	.keynoteheader-title{
 		width: fit-content;
+
+		transition: color 0.15s ease-out,
+								margin-left 0.1s ease-out;
+
+		// underline
+		&::before{
+			content: '';
+			position: absolute;
+			bottom: 0;
+			display: block;
+			width: 0;
+			height: 2px;
+			background-color: @lightPrimaryColor;
+			opacity: 0;
+
+			transition: width 0.1s ease-out;
+		}
+
+		// left stroke
+		&::after{
+			content: '';
+			display: block;
+			width: 30px;
+			height: 2px;
+			background-color: @primaryColor;
+			position: absolute;
+			left: -50px;
+			top: 20px;
+			opacity: 0;
+		}
 	}
 
-	.keynoteheader-subheaders{
-		margin-top: 20px;
-		padding-left: 20px;
+
+	.keynoteheader-subheaders-wrapper{
+			overflow: hidden;
+			position: relative;
+			// for some reason fixes a vertical offset
+			margin-bottom: -20px;
+
+		.keynoteheader-subheaders{
+			padding-left: 20px;
+			margin-top: -20%;
+
+			transition: margin-top 0.15s ease-out;
+
+			.keynoteheader-subheader{
+				position: relative;
+				width: fit-content;
+
+				&::before{
+					content: '';
+					position: absolute;
+					bottom: 0;
+					display: block;
+					width: 0;
+					height: 2px;
+					background-color: @lightPrimaryColor;
+					opacity: 0;
+
+					transition: width 0.1s ease-out;
+				}
+			}
+		}
 	}
 }
 
 .keynoteheader-root:hover{
-	cursor: pointer;
+
+	.keynoteheader-title{
+		cursor: pointer;
+		color: @lightPrimaryColor;
+	}
+}
+
+.keynoteheader-root.active-header{
+
+	.keynoteheader-title{
+		color: @primaryColor;
+		margin-left: -20px;
+
+		// left dash
+		&:after{
+			opacity: 1;
+		}
+	}
+
+	.keynoteheader-subheaders-wrapper{
+		margin-bottom: 20px;
+
+		.keynoteheader-subheaders{
+			margin-top: 0;
+		}
+	}
+}
+
+.keynoteheader-root:focus{
+	outline: none;
+
+	.keynoteheader-title{
+		position: relative;
+
+		// underline
+		&:before{
+			opacity: 1;
+			width: 100%;
+		}
+	}
+	.keynoteheader-subheaders-wrapper{
+
+		.keynoteheader-subheaders{
+
+			.keynoteheader-subheader:focus{
+
+				&:before{
+					width: 0;
+					opacity: 0;
+				}
+			}
+		}
+	}
+}
+
+.keynoteheader-subheaders-wrapper{
+
+	.keynoteheader-subheaders{
+
+		.keynoteheader-subheader:focus{
+			outline: none;
+
+			&:before{
+				opacity: 1;
+				width: 100%;
+			}
+		}
+	}
 }

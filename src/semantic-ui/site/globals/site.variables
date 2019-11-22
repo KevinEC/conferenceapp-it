@@ -58,7 +58,6 @@
 
 @shadowColor:				rgba(40, 40, 40, 0.1);
 @shadowColorDark:		rgba(40, 40, 40, 0.3);
-@offBlack:					#1d1d1d;
 
 /*---  Colors  ---*/
 @red         : #F98A8A;
@@ -74,6 +73,8 @@
 @brown       : #D67C1C;
 @grey        : #DCDDDE;
 @black       : #545454;
+@darkBlack: #3d3d3d;
+@offBlack:					#1d1d1d;
 
 
 /*--------------
