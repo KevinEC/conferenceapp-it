@@ -18,6 +18,7 @@ class Keynote extends React.Component {
 		this.state = {
 			id: this.props.match.params.name,
 			keynote: null,
+			questions: null,
 			selectedHeader: null
 		};
 		this.questionsNode = null;
@@ -39,7 +40,8 @@ class Keynote extends React.Component {
 
 	getKeynote = async () => {
 		let data = await this.props.firebase.db.getDocument('keynotes', this.state.id);
-		this.setState({keynote: data.keynote});
+		this.setState({keynote: data.keynote, questions: data.questions});
+		console.log("questions in Keynote index: ", data.questions);
 	};
 
 	setSelectedHead = (head) => {
@@ -108,7 +110,7 @@ class Keynote extends React.Component {
 						</div>
 					</div>
 					<div className="keynote-questions-wrapper">
-						<KeynoteQuestions heading={selectedHeader} />
+						<KeynoteQuestions heading={selectedHeader} data={this.state.questions} />
 					</div>
 				</Container>
 			</Segment>
