@@ -7,14 +7,14 @@ import AuthUserContext from "./context";
 
 import * as ROUTES from '../../Constants/routes';
 
-const withAuthorization = condition => Component => {
+const withAuthorization = (redirect = true, condition) => Component => {
   class WithAuthorization extends React.Component {
 
     componentDidMount() {
       this.listener = this.props.firebase.auth.doOnAuthStateChanged(
         authUser => {
           if (!condition(authUser)) {
-            this.props.history.push(ROUTES.SIGN_IN);
+            if(redirect) this.props.history.push(ROUTES.SIGN_IN);
           }
         },
       );
@@ -29,7 +29,7 @@ const withAuthorization = condition => Component => {
       	//render wrapped component if condition is met
       	<AuthUserContext.Consumer>
       		{ authUser =>
-        		condition(authUser) ? <Component {...this.props} /> : null
+        		condition(authUser) ? <Component {...this.props} authUser={authUser} /> : null
       		}
         </AuthUserContext.Consumer>
       );

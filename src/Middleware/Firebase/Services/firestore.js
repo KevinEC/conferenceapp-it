@@ -28,6 +28,28 @@ class Firestore {
     return data;
   }
 
+  async onDocumentChange(documentName, id) {
+    let doc = await this.db.collection(documentName).doc(id);
+    let observer = doc.onSnapshot(querySnapshot => {
+      querySnapshot.docChanges().forEach(change => {
+        if (change.type === 'added') {
+          console.log('New city: ', change.doc.data());
+        }
+        if (change.type === 'modified') {
+          console.log('Modified city: ', change.doc.data());
+        }
+        if (change.type === 'removed') {
+          console.log('Removed city: ', change.doc.data());
+        }
+      });
+    });
+  }
+
+  async addQuestion(id, newData) {
+    let doc = await this.db.collection("keynotes").doc(id);
+    doc.update()
+
+  }
 }
 
 export default Firestore;

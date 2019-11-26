@@ -54,9 +54,8 @@ class KeynoteHeader extends React.Component {
   };
 
 	passSelectedHead = (active) => {
-		if(active) this.props.setSelectedHead(this.state.title);
+		if(active) this.props.setSelectedHead(this.state.title, this.props.index);
 		else this.props.setSelectedHead(null);
-		
 	};
 
 	createSubheaders = () => {

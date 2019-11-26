@@ -1,7 +1,9 @@
 import React from 'react';
 import "./KeynoteQuestions.less";
 
+import { compose } from 'recompose';
 import { withFirebase } from "../../../Middleware/Firebase";
+import { withAuthentication } from "../../../Middleware/Session";
 
 import { Header, Input, Icon } from 'semantic-ui-react';
 
@@ -10,35 +12,38 @@ class KeynoteQuestions extends React.Component {
 
 	constructor(props) {
 		super(props);
-
 	}
 
 	currentQuestions = () => {
 		let result = [];
-		console.log("heading: ", this.props.heading, " data: ", this.props.data);
-		if(this.props.data && this.props.heading) {
-			console.log(`${this.props.heading} == Why it's Wrong`, this.props.heading == "Why it's Wrong");
-		}
-		if(this.props.data && this.props.heading && this.props.data[this.props.heading]) {
-			let questions = this.props.data[this.props.heading];
-			console.log("current questions: ", questions);
-
-			for(const question of questions) {
+		if(this.props.questions) {
+			let i = 0;
+			for(let questionData of this.props.questions) {
 				result.push(
 					<li 
-						className="keynotequestions-question" 
-						title={`asked by ${question.name}`}
+						className="keynotequestions-question"
+						title={questionData.name}
+						key={i}
 					>
-						{question.question}
+						{questionData.question}
 					</li>
 				);
+				i++;
 			}
 		}
 		return result;
 	};
 
+	createAuthMessage = () => {
+		let message;
+		if(!!!this.props.authUser) message = "you need to be logged in to ask a question";
+		else message = "Ask a Question";
+		return message;
+	};
+ 
 	render() {
 		let questions = this.currentQuestions();
+		let authMessage = this.createAuthMessage();
 
 		return (
 			<div className="keynotequestions-root">
@@ -51,9 +56,10 @@ class KeynoteQuestions extends React.Component {
 					</Header>
 					<Input 
 						inverted
+						disabled={!!!this.props.authUser}
 						className="keynotequestions-input"
 						icon={<Icon inverted size="large" name="plus circle" />}
-						placeholder="Ask a Question" 
+						placeholder={authMessage} 
 					/>
 					<ul className="keynotequestions-questions">
 						{ questions }
@@ -63,5 +69,11 @@ class KeynoteQuestions extends React.Component {
 		);
 	}
 }
+const condition = authUser => !!authUser;
 
-export default withFirebase(KeynoteQuestions);
+const KeynoteQuestionsComposed = compose(
+	withFirebase,
+	withAuthentication,
+)(KeynoteQuestions);
+
+export default KeynoteQuestionsComposed;
