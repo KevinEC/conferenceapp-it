@@ -28,27 +28,61 @@ class Firestore {
     return data;
   }
 
-  async onDocumentChange(documentName, id) {
-    let doc = await this.db.collection(documentName).doc(id);
-    let observer = doc.onSnapshot(querySnapshot => {
+  async onCollectionChange(collectionRef) {
+    let observer = await collectionRef.onSnapshot((querySnapshot) => {
+      let newQuestions = [];
       querySnapshot.docChanges().forEach(change => {
         if (change.type === 'added') {
-          console.log('New city: ', change.doc.data());
-        }
-        if (change.type === 'modified') {
-          console.log('Modified city: ', change.doc.data());
-        }
-        if (change.type === 'removed') {
-          console.log('Removed city: ', change.doc.data());
+          console.log('New document: ', change.doc.data());
+          newQuestions.push(change.doc.data());
         }
       });
+      return {newQuestions: newQuestions, unsub: observer};
     });
+
+    let listener = (newQuestion) => {
+
+    };
   }
 
-  async addQuestion(id, newData) {
-    let doc = await this.db.collection("keynotes").doc(id);
-    doc.update()
+  /* KEYNOTES */
 
+  /*
+  * returns a keynote by id with all headings.
+  * All headings are paired up with a reference 
+  * to their assosciated questions collection
+  */
+  async getKeynote(id) {
+    let headings = [];
+
+    let connection = await this.db.collection('keys').doc(id);
+    let docReference = await connection.get();
+
+    let keynoteData = docReference.data();
+    let headingsData = await connection.collection('headings').get();
+
+    headingsData.forEach((headingRef) => {
+      let heading = headingRef.data();
+      let questionsRef = headingRef.ref.collection('questions');
+
+      headings.push({heading: heading, questions: questionsRef});
+    });
+
+    return {headings: headings, keynoteData: keynoteData};
+  }
+
+  async fetchQuestions(collectionRef) {
+    let questions = [];
+    let questionsData = await collectionRef.get();
+
+    questionsData.forEach((questionRef) => {
+      questions.push(questionRef.data());
+    });
+    return questions;
+  }
+
+  async addQuestion(questionsRef, newData) {
+    await questionsRef.add(newData);
   }
 }
 

@@ -36,5 +36,21 @@
 				color: @offWhite !important;
 			}
 		}
+
+		.keynotequestions-animate{
+			animation: 0.2s ease-out slideDown;
+		}
 	}
+}
+
+@keyframes slideDown {
+	from {
+		transform: translateY(-20%);
+		opacity: 0;
+	}
+	to{
+		transform: translateY(0);
+		opacity: 1;
+	}
+
 }

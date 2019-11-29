@@ -18,6 +18,8 @@ class Keynote extends React.Component {
 		this.state = {
 			id: this.props.match.params.name,
 			keynote: null,
+			keynoteTitle: null,
+			keynoteAuthor: null,
 			selectedQuestions: null,
 			selectedHeader: null
 		};
@@ -39,8 +41,14 @@ class Keynote extends React.Component {
 	}
 
 	getKeynote = async () => {
-		let data = await this.props.firebase.db.getDocument('keynotes', this.state.id);
-		this.setState({keynote: data.keynote});
+		let data = await this.props.firebase.db.getKeynote(this.state.id);
+
+		console.log("new data structure: ", data);
+		this.setState({
+			keynote: data.headings, 
+			keynoteTitle: data.keynoteData.title,
+			keynoteAuthor: data.keynoteData.author
+		});
 	};
 
 	setSelectedHead = (head, index = null) => {
@@ -59,16 +67,26 @@ class Keynote extends React.Component {
 		else return '';
 	};
 
+	keynoteMetaDataComputed = () => {
+		let title = ""; 
+		let author = "";
+
+		if(this.state.keynoteTitle) title = this.state.keynoteTitle;
+		if(this.state.keynoteAuthor) author = this.state.keynoteAuthor;
+
+		return [title, author];
+	};
+
 	createKeynoteHeaders = () => {
 		let headers = [];
 		if(this.state.keynote) {
 			let header; let i = 0;
-			for(let header of this.state.keynote) {
-				if(header.subheaders) {
+			for(let headerData of this.state.keynote) {
+				if(headerData.subheaders) {
 					header = 
 						<KeynoteHeader 
-							title={header.title} 
-							subheaders={header.subheaders} 
+							title={headerData.heading.title} 
+							subheaders={headerData.heading.subheaders} 
 							setSelectedHead={this.setSelectedHead}
 							questionsNode={this.questionsNode}
 							index={i}
@@ -77,7 +95,7 @@ class Keynote extends React.Component {
 				} else {
 					header = 
 						<KeynoteHeader 
-							title={header.title} 
+							title={headerData.heading.title} 
 							setSelectedHead={this.setSelectedHead} 
 							questionsNode={this.questionsNode}
 							index={i}
@@ -92,7 +110,7 @@ class Keynote extends React.Component {
 	};
 
 	render() {
-		let name = this.props.match.params.name;
+		let [title, author] = this.keynoteMetaDataComputed();
 		let headers = this.createKeynoteHeaders();
 		let layout = this.layoutComputed();
 		let selectedHeader = this.selectedHeaderComputed();
@@ -103,9 +121,9 @@ class Keynote extends React.Component {
 					<div className="keynote-content-wrapper">
 						<Header inverted as="h2" className="keynote-title">Keynote</Header>
 						<Header as="h1" inverted className="keynote-name">
-							Modern Animations
+							{title}
 						</Header>
-						<p className="keynote-author">by Klara West</p>
+						<p className="keynote-author">{`by ${author}`}</p>
 						<div className="keynote-content">
 							{ headers }
 						</div>

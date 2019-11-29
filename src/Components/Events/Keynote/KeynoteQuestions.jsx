@@ -12,17 +12,108 @@ class KeynoteQuestions extends React.Component {
 
 	constructor(props) {
 		super(props);
+
+		this.state = {
+			questions: null,
+			newQuestion: "",
+			unsub: null
+		}
 	}
+
+	componentDidUpdate(prevProps) {
+		if(this.props.questions != prevProps.questions) {
+			this.getQuestions();
+
+			// remove previous listener before init the new one
+			if(this.state.unsub != null) {
+				console.log("unsubscribed");
+				this.state.unsub();
+			}
+
+			this.initQuestionsListener();
+		}
+	};
+
+	initQuestionsListener = async () => {
+		console.log("INIT QUESTIONS LISTENER");
+		
+		let newQuestions;
+		if(this.props.questions)
+			newQuestions = await this.questionsListener(this.props.questions);
+
+		if(newQuestions) {
+			this.setState((prevState) => {
+				console.log("original newQuestions: ", newQuestions);
+				newQuestions.filter(questionData => !prevState.includes(questionData));
+				console.log("difference of newQuestions: ", newQuestions);
+				return {
+					newQuestions: newQuestions
+				}
+			});
+		}
+	};
+
+	getQuestions = async () => {
+		let data;
+		if(this.props.questions) {
+			data = await this.props.firebase.db.fetchQuestions(this.props.questions);
+		}
+		this.setState({questions: data});
+	};
+
+	questionsListener = async (questionsRef) => {
+    let newQuestions = [];
+
+		let observer = await questionsRef.onSnapshot((querySnapshot) => {
+      querySnapshot.docChanges().forEach(change => {
+        if (change.type === 'added') {
+          console.log('New document: ', change.doc.data());
+          newQuestions.push(change.doc.data());
+        }
+      })
+    });
+
+    this.setState({unsub: observer});
+    return newQuestions;
+	};
+
+	onSubmit = (e) => {
+		if(this.state.newQuestion != "") {
+			let newQuestionData = {
+				question: this.state.newQuestion,
+				author: "placeholder"
+			};
+			//this.props.firebase.db.addQuestion(this.props.questions, newQuestionData);
+			this.appendNewQuestion(newQuestionData);
+		}
+		this.setState({newQuestion: ""});
+		e.preventDefault();
+	};
+
+	setNewQuestion = (e) => {
+		this.setState({newQuestion: e.target.value});
+	};
+
+	appendNewQuestion = (questionData) => {
+		questionData.animate = 'keynotequestions-animate';
+		this.setState((prevState) => {
+			prevState.questions.push(questionData);
+			return {
+				questions: prevState.questions
+			};
+		});
+	};
 
 	currentQuestions = () => {
 		let result = [];
-		if(this.props.questions) {
+		if(this.state.questions) {
+			console.log("iterating over: ", this.state.questions);
 			let i = 0;
-			for(let questionData of this.props.questions) {
+			for(let questionData of this.state.questions) {
 				result.push(
 					<li 
-						className="keynotequestions-question"
-						title={questionData.name}
+						className={`keynotequestions-question ${questionData.animate}`}
+						title={questionData.author}
 						key={i}
 					>
 						{questionData.question}
@@ -54,13 +145,19 @@ class KeynoteQuestions extends React.Component {
 					<Header inverted as="h2" className="keynotequestions-heading">
 						{ this.props.heading }
 					</Header>
-					<Input 
-						inverted
-						disabled={!!!this.props.authUser}
-						className="keynotequestions-input"
-						icon={<Icon inverted size="large" name="plus circle" />}
-						placeholder={authMessage} 
-					/>
+							
+					<form onSubmit={this.onSubmit}>
+						<Input 
+							inverted
+							disabled={!!!this.props.authUser}
+							className="keynotequestions-input"
+							name="newQuestion"
+							value={this.state.newQuestion}
+							onChange={this.setNewQuestion}
+							placeholder={authMessage} 
+							icon={<Icon inverted size="large" name="plus circle" />}
+						/>
+					</form>
 					<ul className="keynotequestions-questions">
 						{ questions }
 					</ul>
