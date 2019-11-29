@@ -37,12 +37,8 @@ class Firestore {
           newQuestions.push(change.doc.data());
         }
       });
-      return {newQuestions: newQuestions, unsub: observer};
+      return { newQuestions: newQuestions, unsub: observer };
     });
-
-    let listener = (newQuestion) => {
-
-    };
   }
 
   /* KEYNOTES */
@@ -59,7 +55,7 @@ class Firestore {
     let docReference = await connection.get();
 
     let keynoteData = docReference.data();
-    let headingsData = await connection.collection('headings').get();
+    let headingsData = await connection.collection('headings').orderBy("order", "asc").get();
 
     headingsData.forEach((headingRef) => {
       let heading = headingRef.data();

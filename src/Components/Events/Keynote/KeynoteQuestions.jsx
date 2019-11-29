@@ -14,7 +14,7 @@ class KeynoteQuestions extends React.Component {
 		super(props);
 
 		this.state = {
-			questions: null,
+			questions: [],
 			newQuestion: "",
 			unsub: null
 		}
@@ -22,11 +22,11 @@ class KeynoteQuestions extends React.Component {
 
 	componentDidUpdate(prevProps) {
 		if(this.props.questions != prevProps.questions) {
-			this.getQuestions();
 
 			// remove previous listener before init the new one
+			// also reset the questions array to avoid infinte append
 			if(this.state.unsub != null) {
-				console.log("unsubscribed");
+				this.setState({questions: []});
 				this.state.unsub();
 			}
 
@@ -41,40 +41,20 @@ class KeynoteQuestions extends React.Component {
 		if(this.props.questions)
 			newQuestions = await this.questionsListener(this.props.questions);
 
-		if(newQuestions) {
-			this.setState((prevState) => {
-				console.log("original newQuestions: ", newQuestions);
-				newQuestions.filter(questionData => !prevState.includes(questionData));
-				console.log("difference of newQuestions: ", newQuestions);
-				return {
-					newQuestions: newQuestions
-				}
-			});
-		}
-	};
-
-	getQuestions = async () => {
-		let data;
-		if(this.props.questions) {
-			data = await this.props.firebase.db.fetchQuestions(this.props.questions);
-		}
-		this.setState({questions: data});
 	};
 
 	questionsListener = async (questionsRef) => {
-    let newQuestions = [];
 
 		let observer = await questionsRef.onSnapshot((querySnapshot) => {
       querySnapshot.docChanges().forEach(change => {
         if (change.type === 'added') {
           console.log('New document: ', change.doc.data());
-          newQuestions.push(change.doc.data());
+          this.appendNewQuestion(change.doc.data());
         }
       })
     });
 
     this.setState({unsub: observer});
-    return newQuestions;
 	};
 
 	onSubmit = (e) => {
@@ -107,13 +87,12 @@ class KeynoteQuestions extends React.Component {
 	currentQuestions = () => {
 		let result = [];
 		if(this.state.questions) {
-			console.log("iterating over: ", this.state.questions);
 			let i = 0;
 			for(let questionData of this.state.questions) {
 				result.push(
 					<li 
 						className={`keynotequestions-question ${questionData.animate}`}
-						title={questionData.author}
+						title={`asked by ${questionData.author}`}
 						key={i}
 					>
 						{questionData.question}

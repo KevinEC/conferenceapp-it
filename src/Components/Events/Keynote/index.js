@@ -82,11 +82,11 @@ class Keynote extends React.Component {
 		if(this.state.keynote) {
 			let header; let i = 0;
 			for(let headerData of this.state.keynote) {
-				if(headerData.subheaders) {
+				if(headerData.heading.subheadings) {
 					header = 
 						<KeynoteHeader 
 							title={headerData.heading.title} 
-							subheaders={headerData.heading.subheaders} 
+							subheaders={headerData.heading.subheadings} 
 							setSelectedHead={this.setSelectedHead}
 							questionsNode={this.questionsNode}
 							index={i}
