@@ -1,3 +1,7 @@
 /*******************************
     User Variable Overrides
 *******************************/
+@textColor: rgba(0, 0, 0, 0.8);
+
+@primaryTextColor: @textColor;
+@yellowTextColor: @textColor;

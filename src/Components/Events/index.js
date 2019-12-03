@@ -3,9 +3,10 @@ import "./index.less";
 
 import { compose } from 'recompose';
 import { withFirebase } from "../../Middleware/Firebase";
-import { withRouter } from "react-router-dom";
+import { withAuthentication } from "../../Middleware/Session";
+import { withRouter, Link } from "react-router-dom";
 
-import { Segment, Header, Container } from 'semantic-ui-react';
+import { Segment, Header, Container, Button } from 'semantic-ui-react';
 
 import RoomHeader from "./RoomHeader.jsx";
 import Event from "./Event.jsx";
@@ -13,7 +14,7 @@ import EventExpand from "./EventExpand.jsx";
 
 import camelCase from "lodash/camelCase"; 
 import { colorCode } from "../../Helpers/colorCoding.js";
-import * as ROUTES from "../../Constants/routes.js"; 
+import { EVENTS, CREATE_EVENT } from "../../Constants/routes.js"; 
 
 class Events extends React.Component {
 
@@ -46,7 +47,7 @@ class Events extends React.Component {
 		let selectedEventData = this.state.eventsData.find(event => (camelCase(event.data.name) === id));
 
 
-		this.props.history.push(`${ROUTES.EVENTS}/${camelCase(selectedEventData.data.name)}`);
+		this.props.history.push(`${EVENTS}/${camelCase(selectedEventData.data.name)}`);
 
 		this.setState((state, props) => {
 			return {
@@ -61,10 +62,28 @@ class Events extends React.Component {
 		});
 	};
 
-	setLayout = (state) => {
+	setLayout = () => {
 		let className;
-		if(state.selectedId) { return 'split'; }
+		if(this.state.selectedId) { return 'split'; }
 		else { return ''; } 
+	};
+
+	createEventButtonComputed = () => {
+		let button = null;
+		if(this.props.authUser) {
+			button = 
+				<Button 
+					as={Link}
+					to={CREATE_EVENT}
+					primary
+					circular
+					icon="plus"
+					size="large"
+					className="events-createEvent"
+					content="create event"
+				/>;
+		}
+		return button;
 	};
 
 	createEvents = () => {
@@ -108,12 +127,16 @@ class Events extends React.Component {
 	render() {
 		let [room1, room2, room3] = this.createEvents();
 		let [header1, header2, header3] = this.defineHeaders(room1.length, room2.length, room3.length);
-		let layout = this.setLayout(this.state);
+		let layout = this.setLayout();
+		let createEventButton = this.createEventButtonComputed();
 
 		return (
 			<Segment vertical className={"events-root " + layout}>
 				<Container className="events-container">
-					<Header as="h1" size="huge" content='Events' className="events-header"/>
+					<div className="events-header-wrapper">
+						<Header as="h1" size="huge" content='Events' className="events-header"/>
+						{ createEventButton }
+					</div>
 					<div className="events-body">
 						<div className="events-wrapper">
 							{header1}
@@ -135,7 +158,8 @@ class Events extends React.Component {
 
 const EventsComposed = compose(
 	withFirebase,
-	withRouter
+	withRouter,
+	withAuthentication
 )(Events);
 
 export default withFirebase(EventsComposed);
