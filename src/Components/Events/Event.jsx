@@ -22,14 +22,14 @@ class Event extends React.Component {
 		this.props.passSelectedEvent(this.state.eventId);
 	};
 
-	setActive = (props) => {
+	setActive = () => {
 		let className;
-		if(props.active) className = "active-event";
+		if(this.props.active) className = "active-event";
 		return className;
 	}
 
 	render() {
-		let active = this.setActive(this.props);
+		let active = this.setActive();
 
 		return (
 			<div className={"event-root " + active} onClick={this.passSelectedEvent}>

@@ -14,9 +14,9 @@ class InfoPanels extends React.Component {
 
 	render() {
 		return (
-			<Segment borderless vetical className="infopanels-root">
+			<Segment vertical className="infopanels-root">
 				<div className="infopanels-border">
-					<Container borderless className="infopanels-container">
+					<Container className="infopanels-container">
 						<div id="infopanels-who" className="infopanels-panel">
 							<h1 className="ui header infopanels-header">
 								Who Are 

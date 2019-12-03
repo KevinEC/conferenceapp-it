@@ -6,28 +6,24 @@ import camelCase from "lodash/camelCase";
 
 import { Header, Button, Icon } from 'semantic-ui-react';
 
+import { EVENTS } from "../../Constants/routes.js";
+
 class EventExpand extends React.Component {
 
-	constructor(props) {
-		super(props);
-
-	}
-
 	setContent = () => {
-		let name, author, description, date, time, id;
+		let name, author, description, date, time;
 		if(this.props.data) {
-			id = this.props.eventId;
 			name = this.props.data.name;
 			author = this.props.data.author;
 			description = this.props.data.description;
 			date = (new Date(this.props.data.time.seconds * 1000)).toDateString();
 			time = (new Date(this.props.data.time.seconds * 1000)).toTimeString().substring(0,5);
 		}
-		return [name, author, description, date, time, id];
+		return [name, author, description, date, time];
 	};
 
 	render() {
-		let [name, author, description, date, time, id] = this.setContent();
+		let [name, author, description, date, time] = this.setContent();
 
 		return (
 			<div className="eventexpand-root">
@@ -45,7 +41,7 @@ class EventExpand extends React.Component {
 					<Button primary className="eventexpand-attend">Attend</Button>
 					<Button 
 						as={Link} 
-						to={`${this.props.location.pathname}/${camelCase(name)}/keynote`}
+						to={`${EVENTS}/${camelCase(name)}/keynote`}
 						inverted 
 						primary 
 						className="eventexpand-keynotes">Keynotes</Button>

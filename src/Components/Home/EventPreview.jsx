@@ -1,8 +1,12 @@
 import React from 'react';
 
 import "./EventPreview.less";
+import { Link } from "react-router-dom";
 
 import { Header, Button } from 'semantic-ui-react';
+
+import camelCase from "lodash/camelCase"; 
+import { EVENTS } from "../../Constants/routes.js";
 
 class EventPreview extends React.Component {
 
@@ -27,7 +31,15 @@ class EventPreview extends React.Component {
 				<span className="event-preview-author">
 					{ "by " + this.props.author }
 				</span>
-				<Button primary size="small" className="event-preview-btn">more</Button>
+				<Button
+					primary 
+					as={Link}
+					to={`${EVENTS}/${camelCase(this.props.name)}`}
+					size="small" 
+					className="event-preview-btn"
+				>
+					more
+				</Button>
 			</div>
 		);
 	}

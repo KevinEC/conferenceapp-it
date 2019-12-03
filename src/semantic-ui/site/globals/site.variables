@@ -27,7 +27,7 @@
     Brand Colors
 --------------------*/
 
-@primaryColor        : 	#FFF27D;
+@primaryColor        : 	#fff06d;
 @secondaryColor      :	#6D4D62;
 
 @lightPrimaryColor   : 	#FFF8BF;
@@ -62,7 +62,7 @@
 /*---  Colors  ---*/
 @red         : #F98A8A;
 @orange      : #F9B88A;
-@yellow      : #FFE21F;
+@yellow      : @primaryColor;
 @olive       : #D9E778;
 @green       : #2ECC40;
 @teal        : #6DFFFF;

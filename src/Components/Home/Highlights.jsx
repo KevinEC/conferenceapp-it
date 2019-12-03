@@ -7,10 +7,6 @@ import Highlight from "./Highlight";
 
 class Highlights extends React.Component {
 
-	constructor(props) {
-		super(props);
-	}
-
 	render() {
 		return (
 			<Segment inverted vertical className="highlights-root">

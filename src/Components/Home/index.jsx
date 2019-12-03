@@ -1,7 +1,4 @@
 import React from "react";
-
-import { withFirebase } from "../../Middleware/Firebase";
-import { withAuthorization } from "../../Middleware/Session";
   
 import Hero from "./Hero.jsx";
 import Highlights from "./Highlights.jsx";

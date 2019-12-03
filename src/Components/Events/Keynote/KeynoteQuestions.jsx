@@ -21,11 +21,11 @@ class KeynoteQuestions extends React.Component {
 	}
 
 	componentDidUpdate(prevProps) {
-		if(this.props.questions != prevProps.questions) {
+		if(this.props.questions !== prevProps.questions) {
 
 			// remove previous listener before init the new one
 			// also reset the questions array to avoid infinte append
-			if(this.state.unsub != null) {
+			if(this.state.unsub !== null) {
 				this.setState({questions: []});
 				this.state.unsub();
 			}
@@ -63,8 +63,13 @@ class KeynoteQuestions extends React.Component {
 				question: this.state.newQuestion,
 				author: "placeholder"
 			};
-			//this.props.firebase.db.addQuestion(this.props.questions, newQuestionData);
-			this.appendNewQuestion(newQuestionData);
+			this.props.firebase.db.addQuestion(this.props.questions, newQuestionData);
+			/* 
+			*  below function call was supposed to append a local copy imediatley
+			*  for a more responsive experience but it seems like firebase is fast
+			*  enough for the delay to be unoticeable
+			*/
+			//this.appendNewQuestion(newQuestionData);
 		}
 		this.setState({newQuestion: ""});
 		e.preventDefault();

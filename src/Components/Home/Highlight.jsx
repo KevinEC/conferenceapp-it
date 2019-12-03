@@ -5,10 +5,6 @@ import { Header, Image } from 'semantic-ui-react';
 
 class Highlight extends React.Component {
 
-	constructor(props) {
-		super(props);
-	}
-
 	render() {
 		return (
 			<div className="highlight-root">

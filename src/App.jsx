@@ -34,9 +34,16 @@ const App = () => {
           <Navbar authenticated={authUser}/>
 
           <Route exact path={ROUTES.HOME} component={Home} />
+
           <Route path={ROUTES.TICKETS} component={Tickets} />
-          <Route exact path={ROUTES.EVENTS} component={Events} />
+
+          <Route
+            exact
+            path={[ROUTES.EVENTS, ROUTES.EVENT]} 
+            component={Events} 
+          />
           <Route path={ROUTES.KEYNOTE} component={Keynote} />
+
           <Route path={ROUTES.ROOMS} component={RoomsEvent} />
           
           <Route path={ROUTES.SIGN_IN} component={SignInPage} />

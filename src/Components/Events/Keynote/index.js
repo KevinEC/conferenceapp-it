@@ -8,7 +8,7 @@ import { withFirebase } from "../../../Middleware/Firebase";
 import KeynoteHeader from "./KeynoteHeader.jsx";
 import KeynoteQuestions from "./KeynoteQuestions.jsx";
 
-import { Header, Button, Icon, Segment, Container } from 'semantic-ui-react';
+import { Header, Segment, Container } from 'semantic-ui-react';
 
 class Keynote extends React.Component {
 
@@ -43,7 +43,6 @@ class Keynote extends React.Component {
 	getKeynote = async () => {
 		let data = await this.props.firebase.db.getKeynote(this.state.id);
 
-		console.log("new data structure: ", data);
 		this.setState({
 			keynote: data.headings, 
 			keynoteTitle: data.keynoteData.title,

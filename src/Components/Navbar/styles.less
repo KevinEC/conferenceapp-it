@@ -6,6 +6,38 @@
 	position: absolute;
 	width: 100%;
 	z-index: 20;
+
+	.nav-link.item.active, a.nav-link.item{
+		background: transparent;
+		position: relative;
+
+		&:hover{
+			background: transparent;
+		}
+
+		&::after{
+			opacity: 0;
+
+			content: '';
+			display: inline-block;
+			position: absolute;
+			top: unset;
+			bottom: 3px;
+			left: 5%;
+			width: 90%;
+			height: 3px;
+			background-color: @offWhite;
+
+			transition: opacity 0.1s ease-out;
+		}
+	}
+
+	a.nav-link.item:hover, .nav-link.item.active{
+
+		&::after{
+			opacity: 1;
+		}
+	}
 }
 .navbar-root.navbar-primary{
 	background-color: @primaryColor !important;

@@ -40,7 +40,7 @@ class Navbar extends React.Component {
 
 	setBackground = (state) => {
 		let className = '';
-		if(state.route === ROUTES.HOME) {
+		if(state.route === ROUTES.HOME || state.route === ROUTES.SIGN_IN) {
 			className = 'navbar-transparent inverted';
 		} else {
 			className = 'navbar-primary';
@@ -67,7 +67,7 @@ class Navbar extends React.Component {
 		return (
 			<Menu borderless={true} size='huge' className={"navbar-root " + backgroundClass}>
 				<Container>
-					<Menu.Item as={NavLink} to={ROUTES.HOME} name="Home" className="nav-link" activeClassName="active" />
+					<Menu.Item as={NavLink} exact to={ROUTES.HOME} name="Home" className="nav-link" activeClassName="active" />
 					<Menu.Item as={NavLink} to={ROUTES.TICKETS} name="Tickets" className="nav-link" activeClassName="active" />
 					<Menu.Item as={NavLink} to={ROUTES.EVENTS} name="Events" className="nav-link" activeClassName="active" />
 					{accountMenu}

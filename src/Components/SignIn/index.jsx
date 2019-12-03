@@ -1,16 +1,23 @@
 import React from 'react';
+
+import "./index.less";
+
 import { withRouter } from 'react-router-dom';
 import { withFirebase } from "../../Middleware/Firebase";
 
 import { compose } from 'recompose';
 
+import { Container, Button, Form } from "semantic-ui-react";
+
 import * as ROUTES from "../../Constants/routes.js";
 
 const SignInPage = () => (
-	<div>
-		<h1>Sign In</h1>
-		<SignInForm />
-	</div>
+	<Container className="signin-root">
+		<div className="signin-card">
+			<h1>Sign In</h1>
+			<SignInForm />
+		</div>
+	</Container>
 );
 
 const INITIAL_STATE = {
@@ -54,26 +61,33 @@ class SignInFormBase extends React.Component {
 		const isInvalid = password === '' || email === '';
 
 		return (
-			<form onSubmit={this.onSubmit}>
-			    <input
+			<Form className="singin-form" onSubmit={this.onSubmit}>
+			    <Form.Input
+			    	label="email"
 			      name="email"
 			      value={email}
 			      onChange={this.onChange}
 			      type="text"
 			      placeholder="Email"
 			    />
-			    <input
+			    <Form.Input
+			      label="password"
 			      name="password"
 			      value={password}
 			      onChange={this.onChange}
 			      type="password"
 			      placeholder="Password"
 			    />
-			    <button disabled={isInvalid} type="submit">
+			    <Form.Button 
+			    	primary 
+			    	disabled={isInvalid} 
+			    	className="signin-submit"
+			    	type="submit"
+		    	>
 			      Sign In
-			    </button>
+			    </Form.Button>
 			    {error && <p>{error.message}</p>}
-		  	</form>
+		  	</Form>
 		);
 	}
 }

@@ -1,7 +1,9 @@
 import React from 'react';
 import "./index.less";
 
+import { compose } from 'recompose';
 import { withFirebase } from "../../Middleware/Firebase";
+import { withRouter } from "react-router-dom";
 
 import { Segment, Header, Container } from 'semantic-ui-react';
 
@@ -9,7 +11,9 @@ import RoomHeader from "./RoomHeader.jsx";
 import Event from "./Event.jsx";
 import EventExpand from "./EventExpand.jsx";
 
+import camelCase from "lodash/camelCase"; 
 import { colorCode } from "../../Helpers/colorCoding.js";
+import * as ROUTES from "../../Constants/routes.js"; 
 
 class Events extends React.Component {
 
@@ -26,16 +30,23 @@ class Events extends React.Component {
 
 	componentDidMount() {
 		this.getEvents();
-
 	}
 
 	getEvents = async () => {
 		let data = await this.props.firebase.db.getAll('events');
 		this.setState({eventsData: data});
+
+		// set selected event if route contains event name
+		if(this.props.match.params.name)
+			this.setSelectedEvent(this.props.match.params.name);
 	};
 
 	setSelectedEvent = (id) => {
-		let selectedEventData = this.state.eventsData.find(event => (event.id === id));
+		id = camelCase(id);
+		let selectedEventData = this.state.eventsData.find(event => (camelCase(event.data.name) === id));
+
+
+		this.props.history.push(`${ROUTES.EVENTS}/${camelCase(selectedEventData.data.name)}`);
 
 		this.setState((state, props) => {
 			return {
@@ -62,7 +73,7 @@ class Events extends React.Component {
 			for(let event of this.state.eventsData) {
 
 				let active = false;
-				if(this.state.selectedId === event.id) active = true; 
+				if(this.state.selectedId === camelCase(event.data.name)) active = true; 
 
 				let eventElement = 	
 				<Event 
@@ -72,7 +83,7 @@ class Events extends React.Component {
 						type={event.data.type}
 						active={active}
 						passSelectedEvent={this.setSelectedEvent}
-						eventId={event.id}
+						eventId={camelCase(event.data.name)}
 						key={event.id}
 					/>
 				
@@ -122,4 +133,9 @@ class Events extends React.Component {
 	}
 }
 
-export default withFirebase(Events);
+const EventsComposed = compose(
+	withFirebase,
+	withRouter
+)(Events);
+
+export default withFirebase(EventsComposed);
