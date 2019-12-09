@@ -13,7 +13,7 @@ import SignInPage from "./Components/SignIn";
 
 import Home from "./Components/Home";
 import Tickets from "./Components/Tickets/Tickets";
-import {RoomsEvent} from "./Components/RoomsEvent/RoomsEvent"
+import RoomsEvent from "./Components/RoomsEvent/RoomsEvent";
 import { AuthUserContext, withAuthentication } from "./Middleware/Session";
 import 'semantic-ui-css/semantic.min.css';
 
@@ -36,9 +36,8 @@ const App = () => {
           <Route path={ROUTES.TICKETS} component={Tickets} />
           <Route path={ROUTES.EVENTS} component={Events} />
 
-            <Route path={ROUTES.TICKETS} >
-              <Tickets authenticated={authUser}/>
-            </Route>
+
+            
             <Route path={ROUTES.ROOMS} component={RoomsEvent} />
           
           <Route path={ROUTES.SIGN_IN} component={SignInPage} />

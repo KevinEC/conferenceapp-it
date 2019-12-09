@@ -1,0 +1,78 @@
+.vehicle-card {
+    background: #f6f6f6;
+    border-radius: 3px;
+    margin: 10px;
+    width: 280px;
+    margin: auto;
+    margin-top: 4em;
+  }
+
+ #show{
+   display: none;
+ }
+  .vehicle-card .parking-info,
+  .vehicle-card .owner-info,
+  .vehicle-card .vehicle-info {
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    text-align: left;
+    padding: 15px 10px;
+    border-bottom: 1px solid #d3d3d3;
+  }
+  .vehicle-card .parking-info .ticket-number {
+    margin-top: 5px;
+    font-size: 20px;
+    font-weight: bold;
+  }
+  .vehicle-card .parking-info .parking-duration {
+    color: #555;
+    font-size: 14px;
+  }
+  .vehicle-card .owner-info .owner-name {
+    font-size: 18px;
+    text-transform: uppercase;
+  }
+  .vehicle-card .owner-info .building-unit {
+    margin-top: 5px;
+    font-size: 14px;
+  }
+  .vehicle-card .vehicle-info .license-plate {
+    font-size: 18px;
+    text-transform: uppercase;
+  }
+  .vehicle-card .vehicle-info .vehicle-model {
+    margin-top: 5px;
+    font-size: 14px;
+  }
+  .vehicle-card .status {
+    border-radius: 0px 0px 3px 3px;
+    background: rgb(39, 131, 218);
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    text-align: center;
+  }
+  .vehicle-card .status.requested {
+    background: rgba(238, 82, 83, 0.8);
+  }
+  .vehicle-card .status.preparing {
+    background: rgba(255, 159, 67, 0.8);
+  }
+  .vehicle-card .status.readyforpickup {
+    background: rgba(16, 172, 132, 0.8);
+  }
+  .vehicle-card .status.departured {
+    background: rgba(0, 93, 187, 0.8);
+  }
+  .vehicle-card .status .status-action {
+    padding: 5px;
+    margin: 20px;
+    background-color: #f6f6f6;
+    color: #333;
+  }
+  .vehicle-card .status .status-text {
+    color: #f6f6f6;
+  }
+  

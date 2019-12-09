@@ -47,7 +47,7 @@
 }
 
 .border {
-  border: 2px red solid;
+  border: 2px red solid ;
 }
 /*Search bar tickets end here*/
 
@@ -69,7 +69,7 @@ select {
   border: none !important;
   border-radius: 0px !important;
   border-bottom: 1px rgba(0, 0, 0, 0.5) solid !important;
-  
+  color:black !important;
   width: 100% !important;
   max-width: 180px;
 }
@@ -134,3 +134,4 @@ select {
   user-select: text;
   will-change: top,left,margin,transform,opacity;
 }
+
