@@ -6,7 +6,6 @@ import {
   BrowserRouter as Router,
   Route,
 } from 'react-router-dom';
-//import 'semantic-ui-css/semantic.min.css';
 
 import { Container } from 'semantic-ui-react';
 
@@ -15,7 +14,8 @@ import SignInPage from "./Components/SignIn";
 
 import Home from "./Components/Home";
 import Tickets from "./Components/Tickets/Tickets";
-import { RoomsEvent } from "./Components/RoomsEvent/RoomsEvent"
+import RoomsEvent from "./Components/RoomsEvent/RoomsEvent";
+
 import Events from "./Components/Events";
 import Keynote from "./Components/Events/Keynote";
 import CreateEvent from "./Components/Events/CreateEvent";
@@ -37,7 +37,6 @@ const App = () => {
           <Route exact path={[ROUTES.EVENTS, ROUTES.EVENT]} component={Events} />
           <Route path={ROUTES.KEYNOTE} component={Keynote} />
           <Route path={ROUTES.CREATE_EVENT} component={CreateEvent} />
-
           <Route path={ROUTES.ROOMS} component={RoomsEvent} />
           
           <Route path={ROUTES.SIGN_IN} component={SignInPage} />

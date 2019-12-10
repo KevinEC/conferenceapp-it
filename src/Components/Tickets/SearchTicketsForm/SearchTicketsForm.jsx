@@ -1,12 +1,23 @@
 import React from "react";
 
-export const SearchTicketsForm = () => {
+export const SearchTicketsForm = (props) => {
+let id = "";
+  const getInputValue = (e) => {
+    id =  e.target.value;
+
+  }
+
+  const passData = (e) => {
+     console.log(id);
+      props.searchFunc(id);
+      e.preventDefault();
+
+  }
   return (
     <>
       <form
         className="ui form formSearchTickets"
-        method="POST"
-        action="/signup"
+        onSubmit={passData}
       >
         <div className="field ">
           <div className="labelTicketsAlign">
@@ -20,9 +31,10 @@ export const SearchTicketsForm = () => {
             id="searchTicketInput"
             name="ticketNumber"
             placeholder="Ex P029SD82SA9DS02S"
+            onChange={getInputValue}
           />
         </div>
-        <button className="ui  formButtons" type="submit">
+        <button className="ui  formButtons"  type="submit">
           Submit
         </button>
         <button className="ui formButtons" type="reset">

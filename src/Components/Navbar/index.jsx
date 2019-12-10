@@ -61,15 +61,13 @@ class Navbar extends React.Component {
 		let accountMenu = this.setAccountMenu(this.state);
 		let backgroundClass = this.setBackground(this.state);
 
-		// additonal logic for active class needed
-		// https://stackoverflow.com/questions/47879663/root-navlink-always-get-active-class-react-router-dom
-
 		return (
 			<Menu borderless={true} size='huge' className={"navbar-root " + backgroundClass}>
 				<Container>
 					<Menu.Item as={NavLink} exact to={ROUTES.HOME} name="Home" className="nav-link" activeClassName="active" />
 					<Menu.Item as={NavLink} to={ROUTES.TICKETS} name="Tickets" className="nav-link" activeClassName="active" />
 					<Menu.Item as={NavLink} to={ROUTES.EVENTS} name="Events" className="nav-link" activeClassName="active" />
+					<Menu.Item as={NavLink} to={ROUTES.ROOMS} name="Schedule" className="nav-link" activeClassName="active" />
 					{accountMenu}
 				</Container>
 			</Menu>
