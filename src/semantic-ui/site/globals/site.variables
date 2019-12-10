@@ -18,7 +18,7 @@
 @googleSubset      : 		'latin';
 
 @googleProtocol    : 		'https://';
-@googleFontRequest : 		'Josefin+Sans:400,700,400italic,700italic|Open+Sans:300italic,400|Open+Sans+Condensed:700';
+@googleFontRequest : 		'Josefin+Sans:300,400,700,400italic,700italic|Open+Sans:300italic,400|Open+Sans+Condensed:700';
 
 //'@{googleFontName}:@{googleFontSizes}|@{googleFontName2}:@{googleFontSizes}|@{googleFontName3}:@{googleFontSizes}';
 //'Josefin+Sans:400,700,400italic,700italic|Open+Sans:300italic,400|Open+Sans+Condensed:500';
@@ -73,8 +73,8 @@
 @brown       : #D67C1C;
 @grey        : #DCDDDE;
 @black       : #545454;
-@darkBlack: #3d3d3d;
-@offBlack:					#1d1d1d;
+@darkBlack	 : #3d3d3d;
+@offBlack		 : #1d1d1d;
 
 
 /*--------------

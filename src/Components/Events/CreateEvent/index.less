@@ -5,17 +5,65 @@
 
 	.createevent-container{
 		padding-top: 5%;
+		display: flex;
+		flex-flow: row nowrap;
+		justify-content: center;
+		z-index: 9;
 
-		.createevent-form{
+		.createevent-header-wrapper{
+			flex: 1 1 auto;
+			height: fit-content;
+			padding: 50px;
+			background-color: @primaryColor;
+			box-shadow: 0 0 10px @shadowColor,
+									-20px 10px 40px @shadowColor;
 
-			.createevent-name{
-				border: none;
-				padding-left: 10px;
-				padding-right: 10px;
-				padding-bottom: 10px;
-				font-family: @headerFont;
-				font-weight: bold; 
-				border-bottom: 2px solid @primaryColor;
+			.createevent-header-sugar{
+				font-weight: 300;
+				margin-bottom: 5px;
+			}
+
+			.createevent-header{
+				margin-top: 0;
+			}
+
+		}
+
+		.createevent-form-wrapper{
+			flex: 10 1 auto;
+			box-shadow: 0 0 10px @shadowColor;
+			background-color: white;
+			z-index: 10;
+			margin-left: -10px;
+
+			.createevent-form-header{
+				background-color: @darkBlack;
+				padding: 50px;
+
+				.createevent-form-field label{
+					color: @offWhite;
+				}
+			}
+
+			.createevent-form{
+				padding: 50px;
+				display: flex;
+				flex-flow: row;
+			}
+
+			.createevent-form-field{
+				display: flex;
+				flex-flow: column;
+				margin: unset;
+
+					label{
+						padding-bottom: 10px; 
+						font-weight: bold;
+					}
+
+					input{
+
+					}
 			}
 		}
 	}

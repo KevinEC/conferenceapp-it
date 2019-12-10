@@ -1,0 +1,43 @@
+@import "~semantic-ui-less/themes/default/globals/site.variables";
+@import "../../../semantic-ui/site/globals/site.variables";
+
+.createevent-slider-root{
+	flex: 4 1 auto;
+	margin: 0 5px;
+
+	.createevent-slider{
+		display: flex;
+		flex-flow: row nowrap;
+		align-items: center;
+		padding: 4px;
+		height: 35px;
+		background-color: @darkBlack;
+		border-radius: 30px;
+		position: relative;
+
+		.createevent-slider-option, .createevent-slider-highlight{
+			flex: 1 1 auto;
+			padding: 10px;
+			text-align: center;
+			border-radius: 30px;
+			//background-color: @primaryColor;
+			
+			color: rgba(@offWhite, 0.8);
+			font-weight: bold;
+			z-index: 9;
+		}
+
+		.createevent-slider-highlight{
+			background-color: @primaryColor;
+			position: absolute;	
+			height: calc(100% - 8px);
+			box-shadow: 0 0 10px @shadowColor;
+			z-index: 8;
+			
+			width: 33%;
+			//margin-left: calc((100/3)*2% - 8px);
+
+			transition: margin-left 0.1s ease-out;
+		}
+	}
+}
